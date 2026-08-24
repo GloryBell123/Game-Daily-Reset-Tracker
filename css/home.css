@@ -1,0 +1,129 @@
+* {
+    margin : 0;
+    padding : 0;
+    box-sizing  : border-box;
+}
+.items {
+    border-top: 3px solid black;
+    border-right: 3px solid #000000;
+    border-bottom: 3px solid black;
+    border-left: 3px solid black;
+    max-width: 1000px;
+    max-height: 350px;
+    border-radius: 0px;
+    overflow: hidden;
+}
+.items img {
+    width: 1000px;
+    height: 350px;
+    object-fit: cover;
+}
+.slideshow {
+    max-width: 1000px;
+    max-height: 350px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.slideshow .slick-prev {
+    position: absolute;
+    background-color: white;
+    color: orange;
+    top: 155px;
+    left: 20px;
+    z-index: 10;
+}
+.slideshow .slick-next {
+    position: absolute;
+    background-color: white;
+    color: orange;
+    top: 155px;
+    right: 20px;
+    z-index: 10;
+}
+.slideshow .slick-arrow {
+    width: 30px;
+    height: 30px;
+    z-index: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+}
+.slideshow .slick-dots {
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.slideshow .slick-dots li {
+    border-top: 1px solid black;
+    border-right: 1px solid #000000;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    list-style: none;
+    margin: 0 2px;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+}
+.slideshow .slick-active {
+    background: rgb(0, 0, 0) !important;
+
+}
+.slideshow .slick-current {
+    background: rgb(255, 255, 255) !important;
+}
+.babor-title {
+    border-radius: 40px;
+    border: 1;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+}
+.dowload {
+    border-radius: 40px;
+    height: 50px;
+    border: 1;
+    text-align: center;
+    background-color: rgb(216, 29, 29);
+}
+.babor .row{
+    margin: 0 2px;
+}
+.tutor {
+    background: rgb(240, 0, 0);
+}
+.why {
+    background: white;
+}
+.line img {
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+
+.k
+{
+    border-top: 5px solid black;
+    border-right: 5px solid black;
+    border-bottom: 5px solid black;
+    border-left: 5px solid black;
+}
+
+.box 
+{
+    border-top: 3px solid black;
+    border-right: 3px solid #000000;
+    border-bottom: 3px solid black;
+    border-left: 3px solid black;
+    max-width: 1000px;
+    max-height: 470px;
+    border-radius: 0px;
+    overflow: hidden;
+    background-color: #f6f6f6;
+}
