@@ -19,10 +19,9 @@ class profile
  ?>
    <div style="padding-left : 100px;padding-bottom: 25px">
         <div style="display : flex;align-items: center;">
-            <img src="images/mag.png" alt="Error" style="width:40px;height:40px;">
+            <img draggable="false" src="images/mag.png" alt="Error" style="width:40px;height:40px;">
             <a style="font-size : 30px;color:white;padding-left : 5px">PROFILE</a>
         </div>
-        
                 <?php
                 
                  if (isset($_SESSION['username'])) {
@@ -34,10 +33,7 @@ class profile
                     $cdr = $res -> fetch() ;
                 ?>
         <div style="padding-left : 50px">
-            <table style="padding-left : 100px">
-                <tr>
-                    <td style="height: 70px;background-color: rgba(255, 255, 255, 0.6);border-radius: 45px;height: 200px;width:800px">
-                        <div style="display: flex;">
+                        <div style="display: flex;border-radius: 40px;border: 1px #00f2ff solid;width:800px;background-color: #334155;">
                             <div style="width: 200px;text-align: center;">
                                 <div>
                                     <img src="images/profile_image/<?php echo $cdr['profile']; ?>.png" alt="Error" style="width:120px;height:120px;">
@@ -58,18 +54,12 @@ class profile
                                 </div>
                             </div>
                         </div>
-                    </td>
-                    
-                </tr>
-                <tr>
-                    <td style="height: 70px">
+                    <div>
                     <a href="discord/notification" style="font-size : 30px;color:white;padding-left : 20px;">การตั้งค่าการแจ้งเตือน</a></td>
-                </tr>
-                <tr>
-                    <td>
+                    </div>
+                    <div>
                     <a style="font-size : 30px;color:white;padding-left : 20px" href="index.php?option=logre&task=logout">ออกจากระบบ</a></td>
-                </tr>
-            </table>
+                    </div>
         </div>
         <a href="home" style="position: fixed;bottom: 40px;right: 40px;font-size: 25px;background-color:#545454;color : white;width: 180px;border: none;border-radius: 45px;z-index: 999;text-align :center">กลับหน้าหลัก</a>
         <?php } ?>

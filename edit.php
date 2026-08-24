@@ -22,6 +22,10 @@
             border-color: #a3d2f7;
             background-color: #a3d2f7;
         }
+        .inputwimg {
+            position: relative;
+            display: inline-block;
+        }
     </style>
 </head>
 
@@ -40,27 +44,27 @@ class edit
                 <table>
                     <tr>
                          <td>
-                            <div class="search-navbar">
-                            <p style="color: white;font-size: 70px;">GAME DAILY RESET TRACKER</p>
-                            <img src="/gdrt/src/images/rocket.png" class="search-icon" alt="Error" style="width:90px;height:90px;margin-left: -85px">
+                            <div>
+                                <p style="color: white;font-size: 70px;"><img draggable="false" src="/gdrt/src/images/rocket.png" alt="Error" style="width:90px;height:90px;">GAME DAILY RESET TRACKER</p>
                             </div>
                         </td>
                     </tr>
                     <tr>
-                       <td align='center'><p style="color: white;font-size: 45px;">เปลี่ยนชื่อผู้ใช้</p></td> 
+                       <td align='center'>
+                            <p style="color: white;font-size: 45px;">เปลี่ยนชื่อผู้ใช้</p>
+                        </td> 
                     </tr>
                     <tr align='center'>
                         <td >
-                            <div class="search-navbar" style="margin-top : -40px">
-                            <input required name="username" maxlength="50" placeholder="กรุณากรอก Username" style="border: 0px solid;background-color: #545454;width:320px;height: 40px; border-radius: 45px; margin-left: 8px; padding-left: 50px;">
-                            <img src="/gdrt/src/images/nigga.png" class="search-icon" alt="Error" style="width:25px;height:25px;margin-left:10px;">
+                            <div class="inputwimg">
+                                <img autocomplete="off" draggable="false" src="/gdrt/src/images/nigga.png" alt="Error" style="width:25px;height:25px;left : 15px;position: absolute;top:50%;transform: translateY(-50%);">
+                                <input required name="username" maxlength="50" placeholder="กรุณากรอก Username" style="border: 0px;background-color: #545454;width:320px;height: 40px; border-radius: 45px; padding-left: 50px;">
                             </div>
                         </td>
                     </tr>
-
                     <tr style="display: flex;justify-content: center;padding-top:25px">
                         <td style="padding-right:25px;">
-                            <input value="ยืนยัน" type="submit" style="border: 0px solid; background:#545454; border-radius: 45px;color:#ffffff ;width:100px">
+                            <input value="ยืนยัน" type="submit" style="border: 0px; background:#545454; border-radius: 45px;color:#ffffff ;width:100px">
                             <input type="hidden" name="option" value="edit">
                             <input type="hidden" name="task" value="edit_username">
                         </td>
@@ -102,9 +106,8 @@ class edit
                 <table>
                     <tr>
                          <td>
-                            <div class="search-navbar">
-                            <p style="color: white;font-size: 70px;">GAME DAILY RESET TRACKER</p>
-                            <img src="/gdrt/src/images/rocket.png" class="search-icon" alt="Error" style="width:90px;height:90px;margin-left: -85px">
+                            <div>
+                                <p style="color: white;font-size: 70px;"><img src="/gdrt/src/images/rocket.png" class="search-icon" alt="Error" style="width:90px;height:90px">GAME DAILY RESET TRACKER</p>
                             </div>
                         </td>
                     </tr>
@@ -116,17 +119,17 @@ class edit
                     </tr>
                     <tr align='center'>
                         <td>
-                            <div class="search-navbar">
-                            <input required name="password" type="password" maxlength="50" autocomplete="off" placeholder="กรอกรหัสผ่านใหม่" style="border: 0px solid;background-color: #545454;width:320px;height: 40px; border-radius: 45px; margin-left: 8px; padding-left: 50px;">
-                            <img src="/gdrt/src/images/unlockkey.png" class="search-icon" alt="Error" style="width:45px;height:45px;margin-left:-3px;">
+                            <div class="inputwimg">
+                                <img draggable="false" src="/gdrt/src/images/unlockkey.png" alt="Error" style="width:45px;height:45px;left: 2px;position: absolute;top: 50%;transform: translateY(-50%);">
+                                <input required name="password" type="password" maxlength="50" autocomplete="off" placeholder="กรอกรหัสผ่านใหม่" style="border: 0px;background-color: #545454;width:320px;height: 40px; border-radius: 45px;padding-left: 50px;">
                             </div>
                         </td>
                     </tr>
                     <tr align='center'>
                         <td style="padding-top:25px">
-                            <div class="search-navbar">
-                            <input required name="confirmpass" type="password" maxlength="50" autocomplete="off" placeholder="ยืนยันรหัสผ่าน" style="border: 0px solid;background-color: #545454; width:320px;height: 40px; border-radius: 45px; margin-left: 8px; padding-left: 50px;">
-                            <img src="/gdrt/src/images/unlockkey.png" class="search-icon" alt="Error" style="width:45px;height:45px;margin-left:-3px;">
+                            <div class="inputwimg">
+                                <img draggable="false" src="/gdrt/src/images/unlockkey.png" alt="Error" style="width:45px;height:45px;left: 2px;position: absolute;top: 50%;transform: translateY(-50%);">
+                                <input required name="confirmpass" type="password" maxlength="50" autocomplete="off" placeholder="ยืนยันรหัสผ่าน" style="border: 0px solid;background-color: #545454; width:320px;height: 40px; border-radius: 45px;padding-left: 50px;">
                             </div>
                         </td>
                     </tr>
@@ -187,9 +190,8 @@ class edit
                 <table align='center'>
                     <tr>
                          <td>
-                            <div style="display:flex;align-items: center;justify-content: center;width:1200px;">
-                                <img src="/gdrt/src/images/rocket.png" alt="Error" style="width:90px;height:90px;margin-left: -85px;">
-                                <p style="color: white;font-size: 70px;">GAME DAILY RESET TRACKER</p>
+                            <div>
+                                <p style="color: white;font-size: 70px;"><img src="/gdrt/src/images/rocket.png" alt="Error" style="width:90px;height:90px;">GAME DAILY RESET TRACKER</p>
                             </div>
                         </td>
                     </tr>

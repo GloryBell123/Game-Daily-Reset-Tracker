@@ -37,6 +37,11 @@
             transform: translateX(30px);
             background-color: white;
         }
+        .inputwimg {
+            position: relative;
+            display: inline-block;
+        }
+
     </style>
 </head>
 
@@ -49,50 +54,45 @@ class logre
 function login_form()
  {
  ?>
-        <div class="container" style="display: flex;justify-content: center;height: 500px">
+        <div style="display: flex;justify-content: center;">
+                <p style="color: white;font-size: 70px;"><img draggable="false" src="/gdrt/src/images/rocket.png" alt="Error" style="width:90px;height:90px;">GAME DAILY RESET TRACKER</p>
+        </div>
+        <div class="container" style="display: flex;justify-content: center;width: 400px;padding: 20px;border: 1px #00f2ff solid;border-radius:45px;background-color: #334155;">
             <form action='/gdrt/src/index.php' method='post'>
                 <table>
-                    <tr>
-                         <td>
-                            <div class="search-navbar">
-                            <p style="color: white;font-size: 70px;">GAME DAILY RESET TRACKER</p>
-                            <img src="/gdrt/src/images/rocket.png" class="search-icon" alt="Error" style="width:90px;height:90px;margin-left: -85px">
-                            </div>
-                        </td>
-                    </tr>
                     <tr>
                        <td align='center'><p style="color: white;font-size: 50px;">LOGIN</p></td> 
                     </tr>
                     <tr align='center'>
                         <td>
-                            <div class="search-navbar">
-                            <input name="email" placeholder="กรุณากรอก Email" style="border: 0px solid;background-color: #545454;width:320px;height: 40px; border-radius: 45px; margin-left: 8px; padding-left: 50px;">
-                            <img src="/gdrt/src/images/nigga.png" class="search-icon" alt="Error" style="width:20px;height:20px;margin-left:10px;">
+                            <div class="inputwimg">
+                                <img draggable="false" src="/gdrt/src/images/nigga.png" alt="Error" style="width:20px;height:20px;position: absolute;top: 50%;transform: translateY(-50%);left: 15px;">
+                                <input name="email" placeholder="กรุณากรอก Email" style="border: 0px #00f2ff solid;background-color: white;width:320px;height: 40px; border-radius: 45px;padding-left: 50px;">
                             </div>
                         </td>
                     </tr>
                     <tr align='center'>
                         <td style="padding-top:25px">
-                            <div class="search-navbar">
-                            <input name="password" type="password" size="50" placeholder="กรุณากรอก Password" style="border: 0px solid;background-color: #545454; width:320px;height: 40px; border-radius: 45px; margin-left: 8px; padding-left: 50px;">
-                            <img src="/gdrt/src/images/unlockkey.png" class="search-icon" alt="Error" style="width:45px;height:45px;margin-left:-3px;">
+                            <div class="inputwimg">
+                                <img draggable="false" src="/gdrt/src/images/unlockkey.png" alt="Error" style="width:45px;height:45px;position: absolute;top: 50%;transform: translateY(-50%);left: 2px">
+                                <input name="password" type="password" minlength="4" maxlength="8" placeholder="กรุณากรอก Password" style="border: 0px #00f2ff solid;background-color: white; width:320px;height: 40px; border-radius: 45px;padding-left: 50px;">
                             </div>
                         </td>
                     </tr>
 
                     <tr align='center'>
                         <td style="padding-top:25px">
-                            <input value="ยืนยัน" type="submit" style="border: 0px solid; background:#545454; border-radius: 45px;color:#ffffff ;width:100px">
+                            <input value="ยืนยัน" type="submit" style="border: 3px lime solid; background:#545454; border-radius: 45px;color:#ffffff ;width:100px">
                             <input type="hidden" name="option" value="logre">
                             <input type="hidden" name="task" value="login">
                         </td>
                     </tr>
                     <tr style="display: flex;justify-content: center;padding-top:25px">
                          <td style="padding-right:25px;">
-                            <a align='center' class="nav-link active" href="register_form" style="border: 0px solid; background:#545454; border-radius: 45px;color:#ffffff ;width:100px">ยังไม่มีบัญชี?</a>
+                            <a align='center' class="nav-link active" href="register_form" style="border: 3px #00f2ff solid; background:#545454; border-radius: 45px;color:#ffffff ;width:100px">ยังไม่มีบัญชี?</a>
                         </td>
                         <td>
-                            <input type='button' value='กลับหน้าหลัก' onclick='window.open("/gdrt/src/home","_self")'  style="border: 0px solid; background:#545454; border-radius: 45px;color:#ffffff;width:100px">
+                            <input type='button' value='กลับหน้าหลัก' onclick='window.open("/gdrt/src/home","_self")'  style="border: 3px #0f2ef5 solid; background:#545454; border-radius: 45px;color:#ffffff;width:100px">
                         </td>
                     </tr>
                 </table>
@@ -151,55 +151,51 @@ function logout() {
 function register_form()
 {
 ?>
-     <div class="container" style="display: flex;justify-content: center;height: 500px;">
+    <div style="display: flex;justify-content: center;">
+        <p style="color: white;font-size: 70px;"><img draggable="false" src="/gdrt/src/images/rocket.png" alt="Error" style="width:90px;height:90px;">GAME DAILY RESET TRACKER</p>
+    </div>
+     <div class="container" style="display: flex;justify-content: center;width: 400px;padding: 20px;border: 1px #00f2ff solid;border-radius:45px;background-color: #334155;">
             <form action='' method='post'>
                 <table>
-                    <tr>
-                         <td>
-                            <div class="search-navbar">
-                            <p style="color: white;font-size: 70px;">GAME DAILY RESET TRACKER</p>
-                            <img src="/gdrt/src/images/rocket.png" class="search-icon" alt="Error" style="width:90px;height:90px;margin-left: -85px">
-                            </div>
-                        </td>
-                    </tr>
+                            
                     <tr>
                        <td align='center'><p style="color: white;font-size: 50px;">REGISTER</p></td> 
                     </tr>
                     <tr align='center'>
                         <td>
-                            <div class="search-navbar">
-                            <input required name="username" placeholder="Username" style="border: 0px solid;background-color: #545454;width:320px;height: 40px; border-radius: 45px; margin-left: 8px;text-align: center;">
-                            <img src="/gdrt/src/images/nigga.png" class="search-icon" alt="Error" style="width:20px;height:20px;margin-left:10px;">
+                            <div class="inputwimg">
+                                <img draggable="false" src="/gdrt/src/images/nigga.png" alt="Error" style="width:20px;height:20px;position: absolute;top: 50%;transform: translateY(-50%);left: 15px;">
+                                <input required name="username" placeholder="Username" style="border: 0px #00f2ff solid;background-color: white;width:320px;height: 40px; border-radius: 45px;padding-left: 50px">
                             </div>
                         </td>
                     </tr>
                     <tr align='center'>
                         <td style= "padding-top:25px">
-                            <div class="search-navbar">
-                            <input required name="password" type="password" size="50" placeholder="Password" style="border: 0px solid;background-color: #545454; width:320px;height: 40px; border-radius: 45px; margin-left: 8px;text-align: center; ">
-                            <img src="/gdrt/src/images/unlockkey.png" class="search-icon" alt="Error" style="width:45px;height:45px;margin-left:-3px;">
+                            <div class="inputwimg">
+                                <img draggable="false" src="/gdrt/src/images/unlockkey.png" alt="Error" style="width:45px;height:45px;position: absolute;top: 50%;transform: translateY(-50%);left: 2px;">
+                                <input required name="password" type="password" minlength="8" maxlength="12" placeholder="Password" style="border: 0px #00f2ff solid;background-color: white; width:320px;height: 40px; border-radius: 45px;padding-left: 50px">
                             </div>
                         </td>
                     </tr>
                     <tr align='center'>
                         <td style= "padding-top:25px">
-                            <div class="search-navbar" >
-                            <input required name="email" type="email" size="50" placeholder="Email" style="text-align: center;border: 0px solid;background-color: #545454; width:320px;height: 40px; border-radius: 45px; margin-left: 8px;">
-                            <img src="/gdrt/src/images/letter.png" class="search-icon" alt="Error" style="width:45px;height:30px;margin-left:-3px;">
+                            <div class="inputwimg" >
+                                <img draggable="false" src="/gdrt/src/images/mail.png" alt="Error" style="width:20px;height:20px;position: absolute;top: 50%;transform: translateY(-50%);left: 15px;">
+                                <input required name="email" type="email" size="50" placeholder="Email" style="border: 0px #00f2ff solid;background-color: white; width:320px;height: 40px; border-radius: 45px;padding-left: 50px">
                             </div>
                         </td>
                     </tr>
                     <tr align='center'>
                         <td style= "padding-top:25px">
-                            <input value="ยืนยัน" type="submit" style="border: 0px solid; background:#545454; border-radius: 45px;color:#ffffff ;width:100px">
+                            <input value="ยืนยัน" type="submit" style="border: 3px lime solid; background:#545454; border-radius: 45px;color:#ffffff ;width:100px">
                         </td>
                     </tr>
                     <tr style="display: flex;justify-content: center;padding-top:25px">
                          <td style="padding-right:25px;">
-                            <a align='center' class="nav-link active" href="/gdrt/src/logre/login_form" style="border: 0px solid; background:#545454; border-radius: 45px;color:#ffffff ;width:100px">มีบัญชีอยู่แล้ว</a>
+                            <a align='center' class="nav-link active" href="/gdrt/src/logre/login_form" style="border: 3px #00f2ff solid; background:#545454; border-radius: 45px;color:#ffffff ;width:100px">มีบัญชีอยู่แล้ว</a>
                         </td>
                         <td>
-                            <input type='button' value='กลับหน้าหลัก' onclick='window.open("/gdrt/src/home","_self")'  style="border: 0px solid; background:#545454; border-radius: 45px;color:#ffffff;width:100px">
+                            <input type='button' value='กลับหน้าหลัก' onclick='window.open("/gdrt/src/home","_self")'  style="border: 3px #0f2ef5 solid; background:#545454; border-radius: 45px;color:#ffffff;width:100px">
                         </td>
                     </tr>
                 </table>

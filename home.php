@@ -1,15 +1,33 @@
 <head>
     <style>
+    * {
+        font-family: 'Kanit', sans-serif;
+    }
+
+    .container {
+        width : 1300px;
+    }
+    
     .dropdown {
-        margin-left: 50px;
+        margin-left: 20px;
         border-radius: 30px;
         display: block;
     }
     .dropbtn {
-        color: white;
-        border: none;
+        color: #00f2ff;
+        border: 1px #00f2ff solid;
         cursor: pointer;
+        background-color:#545454
     }
+
+    .dropdown:hover .dropbtn {
+        background-color: #00f2ff;
+        color : black;
+        transition : 0.3s;
+        box-shadow: #00f2ff;
+    }
+
+
     .dropdown-content {
         display: none;     
         position: absolute;
@@ -28,7 +46,7 @@
     .dropdown-content form {
         display: flex;
         flex-wrap: wrap;          /* ถ้าพื้นที่ไม่พอก็ให้ขึ้นบรรทัดใหม่ */
-        justify-content: left;  /* จัดให้อยู่กึ่งกลางกล่อง */
+        justify-content: left;
         gap: 10px;                /* เว้นระยะห่างระหว่างปุ่มซ้าย-ขวา-บน-ล่าง */
         padding: 10px;            /* เว้นระยะขอบในของกล่อง */
     }
@@ -46,22 +64,19 @@
 
     .main {
         display : grid;
-        grid-template-columns: repeat(3, 1fr);
-        padding-top: 30px;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
         gap : 30px;
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-bottom: 50px;
+        margin-top: 10px;
     }
 
     .boxbox {
         height: 350px;
         display: flex;
-        border : 1px solid;
-        background-color: white;
-        color: black;
+        border: 1px #00f2ff solid;
+        background-color: #334155;
+        color: #1f2937;
         justify-content: center;
-        border-radius : 45px;
+        border-radius : 20px;
     }
 
   </style>
@@ -74,19 +89,22 @@ class home
  function def()
  {
  ?>
-    <div style="padding-bottom: 25px;padding-left:100px;">
-        <div style="background-color:white;width:400px;text-align:center;border-radius: 30px;height:40px;line-height: 40px;font-size:25px">
-            <p style="display: inline-block">Your Current Time : </p>
+ <div class="container">
+
+    <div style="padding: 10px;background-color: #334155;border: 1px #00f2ff solid;border-radius: 20px;width:420px;display:flex;justify-content:center">
+        <div style="background-color:white;width:400px;text-align:center;border-radius: 30px;height:40px;line-height: 40px;font-size:25px;">
+            <p style="display: inline-block;">Your Current Time : </p>
             <p style="display: inline-block" id="current-local-time"></p>
         </div>
     </div>
-    <div style="padding-left:150px;position: relative;display: flex;align-items: center;">
+    <div style="margin-top: 10px;padding: 10px 0px 10px 10px;position: relative;display: flex;align-items: center;background-color: #334155;border-radius:20px;width:1000px;border: 1px #00f2ff solid;">
+        
         <form method="GET">
             <img src="images/mag.png" alt="Error" style="width:40px;height:40px;position: absolute;margin-left: 10px;margin-top: 5px;">
-            <input type="text" placeholder="Search for a game...." name="searchbar" value="<?php echo isset($_GET['searchbar']) ? htmlspecialchars($_GET['searchbar']) : ''; ?>" style="padding: 10px 10px 10px 55px;width: 400px;height: 50px;font-size:20px;border-radius: 45px;">
+            <input type="text" placeholder="Search for a game...." name="searchbar" value="<?php echo isset($_GET['searchbar']) ? htmlspecialchars($_GET['searchbar']) : ''; ?>" style="border: 0px;padding: 10px 10px 10px 55px;width: 570px;height: 50px;font-size:20px;border-radius: 20px;">
         </form>
         <div class="dropdown">
-            <button class="dropbtn" type="button" data-bs-toggle="dropdown" style="border-radius: 45px;width:100px;height:50px;font-size:25px;background-color:#545454;border-color: color:#545454;">All🐑</button>
+            <button class="dropbtn" type="button" data-bs-toggle="dropdown" style="border-radius: 45px;width:100px;height:50px;font-size:25px;">All <img src="images/arrow.png" style="height: 20px;width: 20px;"></button>
             <div class="dropdown-content">
                 <form method="GET">
                     <input type="submit" name="searchtag" value="Gacha">
@@ -111,16 +129,21 @@ class home
                     <input type="submit" name="searchtag" value="Base Building">
                     <input type="submit" name="searchtag" value="Side-scrolling">
                     <input type="submit" name="searchtag" value="AR">
-                    <input style='color : yellow' type="submit" name="searchfav" value="FV">
                 </form>
             </div>
         </div>
-        <div style='margin-left: 20px;border-radius: 45px;width:100px;height:50px;font-size:25px;background-color:#545454;border-color: #545454;display : flex;justify-content:center;align-items:center'>
+        <div style='margin-left: 20px;border-radius: 45px;width:100px;height:50px;font-size:25px;background-color:#545454;border: 1px #00f2ff solid;display : flex;justify-content:center;align-items:center'>
             <form method="GET">
                 <input style='border: none;background-color: #545454;color :white;width:100px;border-radius:45px' type="submit" value="Clear">
             </form>
         </div>
+        <div style='margin-left: 20px;border-radius: 45px;width:150px;height:50px;font-size:25px;background-color:#545454;border: 1px #00f2ff solid;display : flex;justify-content:center;align-items:center'>
+            <form method="GET">
+                <input style='border: none;background-color: #545454;color : yellow;' type="submit" name="searchfav" value="Favorite">
+            </form>
+        </div>
     </div>
+    
     
         <?php
         if (isset($_GET['searchbar']) && $_GET['searchbar'] !== '') {
@@ -137,7 +160,7 @@ class home
                     left join `tag` on `game_tag`.`tag_id` = `tag`.`id`
                     where `game_list`.`name` like '%".$search_word."%'
                     group by `game_list`.`id`
-                    order by `game_list`.`name`"; }
+                    order by RANDOM()"; }
     
         elseif (isset($_GET['searchtag']) && $_GET['searchtag'] !== ''){
                 $search_tag = $_GET['searchtag'];
@@ -234,16 +257,16 @@ class home
                         data-is-fav="<?php echo $is_favorited ? 'true' : 'false'; ?>"
                         data-reset="<?php echo $game['reset']; ?>"
                         data-timezone="<?php echo $game['timezone']; ?>">
-                            <div style="margin-bottom: 15px; padding: 10px; color:black;">
-                            <center><img style="width: 400px;height:200px" src="images/profile_game/<?php echo $game['pic']; ?>.jpg" alt="error"></center>
+                            <div style="margin-bottom: 15px; padding: 10px; color:white;">
+                            <center><img style="width: 100%;height:200px;border-radius:20px" src="images/profile_game/<?php echo $game['pic']; ?>.jpg" alt="error"></center>
                             <center><div style="font-weight: bold; font-size: 1.2em;"><?php echo $game['name']; ?></div></center>
                             <center><div style="margin-top: 5px; opacity: 0.5;"><?php echo $game['tag_name']; ?></div></center>
                             <div style="margin-top: 5px;">Server Reset Time : <?php echo $game['timezone']; ?> | <?php echo $game['reset']; ?> น.</div>
-                            <div style="margin-top: 5px;">รีเซ็ตในอีก: <span class="time_left" style="font-weight: bold; font-size: 1.1em;"></span>
-                                <!-- fav button -->
-                                <button class="fav-btn" style="height:30px; margin-left:230px; border:none; background:none;" data-game-id="<?php echo $game['id'];?>">
+                            <div style="display : flex;align-items: center;justify-content: space-between;">
+                                <div style="margin-top: 5px;width:250px">รีเซ็ตในอีก: <span class="time_left" style="font-weight: bold; font-size: 1.1em;"></span></div>
+                                <button class="fav-btn" style="height:30px; border:none; background:none;" data-game-id="<?php echo $game['id'];?>">
                                     <i class="fa fa-heart"></i>
-                                </button>
+                                </button> <!-- fav button -->
                             </div>
                             </div>
                         </div>
@@ -254,6 +277,7 @@ class home
                     <div style='color:white;font-size:35px;text-align:center'>❌ ไม่พบเกมที่คุณค้นหา</div>
                     <div></div>
             <?php } ?>
+            </div>
             </div>
 <?php
     }
