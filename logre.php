@@ -75,7 +75,7 @@ function login_form()
                         <td style="padding-top:25px">
                             <div class="inputwimg">
                                 <img draggable="false" src="/gdrt/src/images/unlockkey.png" alt="Error" style="width:45px;height:45px;position: absolute;top: 50%;transform: translateY(-50%);left: 2px">
-                                <input name="password" type="password" minlength="4" maxlength="8" placeholder="กรุณากรอก Password" style="border: 0px #00f2ff solid;background-color: white; width:320px;height: 40px; border-radius: 45px;padding-left: 50px;">
+                                <input name="password" type="password" minlength="8" maxlength="12" placeholder="กรุณากรอก Password" style="border: 0px #00f2ff solid;background-color: white; width:320px;height: 40px; border-radius: 45px;padding-left: 50px;">
                             </div>
                         </td>
                     </tr>
@@ -165,7 +165,7 @@ function register_form()
                         <td>
                             <div class="inputwimg">
                                 <img draggable="false" src="/gdrt/src/images/nigga.png" alt="Error" style="width:20px;height:20px;position: absolute;top: 50%;transform: translateY(-50%);left: 15px;">
-                                <input required name="username" placeholder="Username" style="border: 0px #00f2ff solid;background-color: white;width:320px;height: 40px; border-radius: 45px;padding-left: 50px">
+                                <input required name="username" placeholder="ชื่อผู้ใช้" maxlength="10" style="border: 0px #00f2ff solid;background-color: white;width:320px;height: 40px; border-radius: 45px;padding-left: 50px">
                             </div>
                         </td>
                     </tr>
@@ -173,7 +173,15 @@ function register_form()
                         <td style= "padding-top:25px">
                             <div class="inputwimg">
                                 <img draggable="false" src="/gdrt/src/images/unlockkey.png" alt="Error" style="width:45px;height:45px;position: absolute;top: 50%;transform: translateY(-50%);left: 2px;">
-                                <input required name="password" type="password" minlength="8" maxlength="12" placeholder="Password" style="border: 0px #00f2ff solid;background-color: white; width:320px;height: 40px; border-radius: 45px;padding-left: 50px">
+                                <input required name="password" type="password" minlength="8" maxlength="12" placeholder="รหัสผ่าน" style="background-color: white; width:320px;height: 40px; border-radius: 45px;padding-left: 50px">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr align='center'>
+                        <td style="padding-top:25px">
+                            <div class="inputwimg">
+                                <img draggable="false" src="/gdrt/src/images/unlockkey.png" alt="Error" style="width:45px;height:45px;left: 2px;position: absolute;top: 50%;transform: translateY(-50%);">
+                                <input required name="confirmpass" type="password" minlength="8" maxlength="12" autocomplete="off" placeholder="ยืนยันรหัสผ่าน" style="background-color: white; width:320px;height: 40px; border-radius: 45px;padding-left: 50px">
                             </div>
                         </td>
                     </tr>
@@ -205,53 +213,69 @@ function register_form()
 <?php
  if(isset($_REQUEST['username']) && isset($_REQUEST['password']) && isset($_REQUEST['email']) ) {
     $username = $_REQUEST['username'];
-    $password = sha1($_REQUEST['password']);
+    $password = $_REQUEST['password'];
+    $confirm = $_REQUEST['confirmpass'];
     $email = $_REQUEST['email'];
 
     $conn = new connect();
-    $sql = "select `id` from `user` where `email` = '".$email."'";
-    $res = $conn -> query($sql);
-    if($res->rowCount() > 0){
-        echo '<script>
-                     setTimeout(function() {
-                      swal({
-                          title: "มีบัญชีที่ใช้ Email นี้สมัครแล้ว",  
-                          text: "กรุณาใช้ Email อื่น",
-                          type: "warning"
-                      }, function() {
-                          window.location = "/gdrt/src/logre/register_form";
-                      });
-                    }, 200);
-              </script>';
-    } else {
-        $sql ="insert into `user` set `username` = '".$username."', `email` = '".$email."', `pass` = '".$password."'";
+    if ($password == $confirm) 
+    {
+        $sql = "select `id` from `user` where `email` = '".$email."'";
         $res = $conn -> query($sql);
-        if($res){
+        if($res->rowCount() > 0){
             echo '<script>
-                 setTimeout(function() {
-                  swal({
-                      title: "สมัครสมาชิกสำเร็จ",
-                      text: "กรุณา Login",
-                      type: "success"
-                  }, function() {
-                      window.location = "/gdrt/src/logre/login_form";
-                  });
-                }, 200);
-            </script>';
+                        setTimeout(function() {
+                        swal({
+                            title: "มีบัญชีที่ใช้ Email นี้สมัครแล้ว",  
+                            text: "กรุณาใช้ Email อื่น",
+                            type: "warning"
+                        }, function() {
+                            window.location = "/gdrt/src/logre/register_form";
+                        });
+                        }, 200);
+                </script>';
         } else {
-           echo '<script>
-                 setTimeout(function() {
-                  swal({
-                      title: "สมัครสมาชิกไม่สำเร็จ",
-                      type: "error"
-                  }, function() {
-                      window.location = "/gdrt/src/logre/register_form";
-                  });
+            $sql ="insert into `user` set `username` = '".$username."', `email` = '".$email."', `pass` = '".sha1($password)."'";
+            $res = $conn -> query($sql);
+            if($res){
+                echo '<script>
+                    setTimeout(function() {
+                    swal({
+                        title: "สมัครสมาชิกสำเร็จ",
+                        text: "กรุณา Login",
+                        type: "success"
+                    }, function() {
+                        window.location = "/gdrt/src/logre/login_form";
+                    });
+                    }, 200);
+                </script>';
+            } else {
+            echo '<script>
+                    setTimeout(function() {
+                    swal({
+                        title: "สมัครสมาชิกไม่สำเร็จ",
+                        type: "error"
+                    }, function() {
+                        window.location = "/gdrt/src/logre/register_form";
+                    });
+                    }, 200);
+                </script>';
+            }
+        }
+  }
+  else {
+            echo '<script>
+                setTimeout(function() {
+                swal({
+                    title: "รหัสไม่ตรงกัน",
+                    type: "error"
+                }, function() {
+                    window.location = "";
+                });
                 }, 200);
             </script>';
         }
-    }
-  }
+ }
  }
 
  

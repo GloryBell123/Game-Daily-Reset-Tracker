@@ -58,7 +58,7 @@ class edit
                         <td >
                             <div class="inputwimg">
                                 <img autocomplete="off" draggable="false" src="/gdrt/src/images/nigga.png" alt="Error" style="width:25px;height:25px;left : 15px;position: absolute;top:50%;transform: translateY(-50%);">
-                                <input required name="username" maxlength="50" placeholder="กรุณากรอก Username" style="border: 0px;background-color: #545454;width:320px;height: 40px; border-radius: 45px; padding-left: 50px;">
+                                <input required name="username" maxlength="10" placeholder="กรุณากรอก Username" style="border: 0px;background-color: #545454;width:320px;height: 40px; border-radius: 45px; padding-left: 50px;">
                             </div>
                         </td>
                     </tr>
@@ -121,7 +121,7 @@ class edit
                         <td>
                             <div class="inputwimg">
                                 <img draggable="false" src="/gdrt/src/images/unlockkey.png" alt="Error" style="width:45px;height:45px;left: 2px;position: absolute;top: 50%;transform: translateY(-50%);">
-                                <input required name="password" type="password" maxlength="50" autocomplete="off" placeholder="กรอกรหัสผ่านใหม่" style="border: 0px;background-color: #545454;width:320px;height: 40px; border-radius: 45px;padding-left: 50px;">
+                                <input required name="password" type="password" minlength="8" maxlength="12" autocomplete="off" placeholder="กรอกรหัสผ่านใหม่" style="border: 0px;background-color: #545454;width:320px;height: 40px; border-radius: 45px;padding-left: 50px;">
                             </div>
                         </td>
                     </tr>
@@ -129,7 +129,7 @@ class edit
                         <td style="padding-top:25px">
                             <div class="inputwimg">
                                 <img draggable="false" src="/gdrt/src/images/unlockkey.png" alt="Error" style="width:45px;height:45px;left: 2px;position: absolute;top: 50%;transform: translateY(-50%);">
-                                <input required name="confirmpass" type="password" maxlength="50" autocomplete="off" placeholder="ยืนยันรหัสผ่าน" style="border: 0px solid;background-color: #545454; width:320px;height: 40px; border-radius: 45px;padding-left: 50px;">
+                                <input required name="confirmpass" type="password" minlength="8" maxlength="12" autocomplete="off" placeholder="ยืนยันรหัสผ่าน" style="border: 0px solid;background-color: #545454; width:320px;height: 40px; border-radius: 45px;padding-left: 50px;">
                             </div>
                         </td>
                     </tr>
@@ -178,7 +178,7 @@ class edit
                     title: "รหัสไม่ตรงกัน",
                     type: "error"
                 }, function() {
-                    window.location = "edit/password";
+                    window.location = "/gdrt/src/edit/password";
                 });
                 }, 200);
             </script>';
