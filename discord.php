@@ -125,7 +125,7 @@ class discord {
                                     </div >
                                         <div style="display: flex;justify-content: center">
                                         <p style="color: white;font-size: 45px;">การแจ้งเตือน</p>
-                                    </div>
+                                        </div>
                                     <div style="margin-left:25%;display: inline-box;background-color: #334155;width:500px;padding:10px 0px 10px 0px;border-radius: 20px;border : 2px #00f2ff solid">
                                         <div style="display: flex;justify-content: center;align-items:center">
                                             <span style="font-size : 30px;color : white;">เปิดการแจ้งเตือน </span>

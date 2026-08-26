@@ -1,30 +1,47 @@
 timeFormat = "HH:mm:ss";
-function calculateTimeUntilReset(resetTimeStr, serverTimezoneStr) {
-    const now = new Date();
-    const [resetHours, resetMinutes] = resetTimeStr.split(':').map(Number);
-    let serverOffset = 0;
-    if (serverTimezoneStr) {
-        const match = serverTimezoneStr.match(/(?:GMT|UTC)\s*([+-]\d+)?/i);
+function calculateTimeUntilReset(resettime, ServerTimezone) {
+    let now = moment();
+    let nowZone = moment.tz.guess();
+
+    let offsetHours = 0;
+    
+    if (ServerTimezone) {
+        match = ServerTimezone.match(/(?:GMT|UTC)\s*([+-]?\d+)?/i);
         if (match && match[1]) {
-            serverOffset = parseInt(match[1], 10);
+            offsetHours = parseInt(match[1], 10);       // ดึงค่าตัวเลขหลัง GMT/UTC และแปลงเป็นจำนวนเต็ม (เลขฐาน 10)
+        }
+    }
+    
+    [resetHours, resetMinutes] = resettime.split(':').map(Number);
+    
+    let target = moment.utc().set({
+        hour: resetHours - offsetHours,
+        minute: resetMinutes,
+        second: 0,
+        millisecond: 0
+    });
+
+    let localReset = target.clone().tz(nowZone);
+
+    if (now.isAfter(localReset)) {          // เช็ครอบ 1
+        localReset.add(24, 'hours');
+        if (now.isAfter(localReset)) {      // เช็ครอบ 2
+            localReset.add(24, 'hours');
         }
     }
 
-    let target = new Date(now);
-    target.setUTCHours(resetHours - serverOffset, resetMinutes, 0, 0);
-    if (target <= now) {
-        target.setDate(target.getDate() + 1);
-    }
+    let diffMs = localReset.diff(now);
+    let duration = moment.duration(diffMs);
 
-    const diffMs = target - now;
-    const hours = Math.floor(diffMs / (1000 * 60 * 60));
-    const minutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diffMs % (1000 * 60)) / 1000);
-    const pad = (num) => String(num).padStart(2, '0');
+    let hours = Math.floor(duration.asHours());
+    let minutes = duration.minutes();
+    let seconds = duration.seconds();
+
+    let pad = (num) => String(num).padStart(2, '0');                    // เลขหลักเดียว ใส่ 0 ด้านหน้า
 
     return {
-        timeStr: `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`,
-        diffMs: diffMs
+        timeStr: `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`,       // format HH:mm:ss
+        diffMs: diffMs                                                  // มิลลิวินาทีที่เหลือ
     };
 }
 
@@ -40,10 +57,10 @@ function updateCurrentLocal() {
 
 function updateCurrentGame() {
     document.querySelectorAll(".game-container").forEach(container => {
-        let reset = container.getAttribute("data-reset");
-        let timezone = container.getAttribute("data-timezone");
+        let resettime = container.getAttribute("data-reset");
+        let ServerTimezone = container.getAttribute("data-timezone");
         
-        let result = calculateTimeUntilReset(reset, timezone);
+        let result = calculateTimeUntilReset(resettime, ServerTimezone);
         
         let timerSpan = container.querySelector(".time_left");
         if (timerSpan) {
@@ -107,6 +124,6 @@ $(document).ready(function() {                  // fav system
 });
 
 setInterval(updateCurrentLocal, 300);
-setInterval(updateCurrentGame, 1000);
+setInterval(updateCurrentGame, 300);
 updateCurrentLocal();
 updateCurrentGame();

@@ -58,7 +58,7 @@ function login_form()
                 <p style="color: white;font-size: 70px;"><img draggable="false" src="/gdrt/src/images/rocket.png" alt="Error" style="width:90px;height:90px;">GAME DAILY RESET TRACKER</p>
         </div>
         <div class="container" style="display: flex;justify-content: center;width: 400px;padding: 20px;border: 1px #00f2ff solid;border-radius:45px;background-color: #334155;">
-            <form action='/gdrt/src/index.php' method='post'>
+            <form action='' method='post'>
                 <table>
                     <tr>
                        <td align='center'><p style="color: white;font-size: 50px;">LOGIN</p></td> 
@@ -67,7 +67,7 @@ function login_form()
                         <td>
                             <div class="inputwimg">
                                 <img draggable="false" src="/gdrt/src/images/nigga.png" alt="Error" style="width:20px;height:20px;position: absolute;top: 50%;transform: translateY(-50%);left: 15px;">
-                                <input name="email" placeholder="กรุณากรอก Email" style="border: 0px #00f2ff solid;background-color: white;width:320px;height: 40px; border-radius: 45px;padding-left: 50px;">
+                                <input required name="email" placeholder="กรุณากรอก Email" style="border: 0px #00f2ff solid;background-color: white;width:320px;height: 40px; border-radius: 45px;padding-left: 50px;">
                             </div>
                         </td>
                     </tr>
@@ -75,14 +75,14 @@ function login_form()
                         <td style="padding-top:25px">
                             <div class="inputwimg">
                                 <img draggable="false" src="/gdrt/src/images/unlockkey.png" alt="Error" style="width:45px;height:45px;position: absolute;top: 50%;transform: translateY(-50%);left: 2px">
-                                <input name="password" type="password" minlength="8" maxlength="12" placeholder="กรุณากรอก Password" style="border: 0px #00f2ff solid;background-color: white; width:320px;height: 40px; border-radius: 45px;padding-left: 50px;">
+                                <input required name="password" type="password" minlength="8" maxlength="12" placeholder="กรุณากรอก Password" style="border: 0px #00f2ff solid;background-color: white; width:320px;height: 40px; border-radius: 45px;padding-left: 50px;">
                             </div>
                         </td>
                     </tr>
 
                     <tr align='center'>
                         <td style="padding-top:25px">
-                            <input value="ยืนยัน" type="submit" style="border: 3px lime solid; background:#545454; border-radius: 45px;color:#ffffff ;width:100px">
+                            <input value="เข้าสู่ระบบ" type="submit" style="border: 3px lime solid; background:#545454; border-radius: 45px;color:#ffffff ;width:100px">
                             <input type="hidden" name="option" value="logre">
                             <input type="hidden" name="task" value="login">
                         </td>
@@ -116,7 +116,6 @@ function login()
             $_SESSION['ssid'] = $cdr['id'];
             $_SESSION['username'] = $cdr['username'];
             $cc = 1;
-            
         }
         if ($cc == 0) {
             echo '<script>
@@ -125,7 +124,7 @@ function login()
                       title: "เข้าสู่ระบบไม่สำเร็จ",
                       text: "Email หรือ Password ผิด",
                       type: "error"
-                  }, function() {
+                  }, function() {   
                       window.location = "/gdrt/src/logre/login_form";
                   });
                 }, 200);
@@ -157,7 +156,6 @@ function register_form()
      <div class="container" style="display: flex;justify-content: center;width: 400px;padding: 20px;border: 1px #00f2ff solid;border-radius:45px;background-color: #334155;">
             <form action='' method='post'>
                 <table>
-                            
                     <tr>
                        <td align='center'><p style="color: white;font-size: 50px;">REGISTER</p></td> 
                     </tr>
@@ -195,7 +193,7 @@ function register_form()
                     </tr>
                     <tr align='center'>
                         <td style= "padding-top:25px">
-                            <input value="ยืนยัน" type="submit" style="border: 3px lime solid; background:#545454; border-radius: 45px;color:#ffffff ;width:100px">
+                            <input value="สมัครสมาชิก" type="submit" style="border: 3px lime solid; background:#545454; border-radius: 45px;color:#ffffff ;width:100px">
                         </td>
                     </tr>
                     <tr style="display: flex;justify-content: center;padding-top:25px">
@@ -267,7 +265,7 @@ function register_form()
             echo '<script>
                 setTimeout(function() {
                 swal({
-                    title: "รหัสไม่ตรงกัน",
+                    title: "รหัสผ่านไม่ตรงกัน",
                     type: "error"
                 }, function() {
                     window.location = "";
@@ -276,9 +274,6 @@ function register_form()
             </script>';
         }
  }
- }
-
- 
-
+ }  
 }
 ?>

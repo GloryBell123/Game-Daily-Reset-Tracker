@@ -160,7 +160,7 @@ class home
                     left join `tag` on `game_tag`.`tag_id` = `tag`.`id`
                     where `game_list`.`name` like '%".$search_word."%'
                     group by `game_list`.`id`
-                    order by RANDOM()"; }
+                    order by  `game_list`.`name`"; }
     
         elseif (isset($_GET['searchtag']) && $_GET['searchtag'] !== ''){
                 $search_tag = $_GET['searchtag'];
