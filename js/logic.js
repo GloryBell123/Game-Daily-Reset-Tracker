@@ -70,6 +70,27 @@ function updateCurrentGame() {
     });
 }
 
+
+function toggleNotification() {
+    let noti = document.getElementById('noti_toggle');
+    let noti_60 = document.getElementById('noti_toggle_60');
+    let noti_30 = document.getElementById('noti_toggle_30');
+    let noti_10 = document.getElementById('noti_toggle_10');
+                    
+    let isChecked = noti.checked ? 1 : 0;
+    let isChecked_60 = noti_60.checked ? 1 : 0;
+    let isChecked_30 = noti_30.checked ? 1 : 0;
+    let isChecked_10 = noti_10.checked ? 1 : 0;
+
+    fetch('/gdrt/src/savenoti.php', {
+        method: 'POST',
+            headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `noti_status=${isChecked}&noti_60=${isChecked_60}&noti_30=${isChecked_30}&noti_10=${isChecked_10}`
+    });
+}
+
 $(document).ready(function() {                  // fav system
     $('.fav-btn').each(function() {
         let btn = $(this);

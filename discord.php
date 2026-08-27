@@ -105,10 +105,13 @@ class discord {
     function notification() { 
         $user_id = $_SESSION['ssid'];
         $conn = new connect();
-            $sql = "SELECT `noti_status` FROM `user` WHERE `id` = '".$user_id."'";
+            $sql = "SELECT `noti_status`,`noti_60`,`noti_30`,`noti_10` FROM `user` WHERE `id` = '".$user_id."'";
             $res = $conn -> query($sql);
             $cdr = $res -> fetch();
             $user_noti_status = $cdr['noti_status'];
+            $user_noti_status_60 = $cdr['noti_60'];
+            $user_noti_status_30 = $cdr['noti_30'];
+            $user_noti_status_10 = $cdr['noti_10'];
 
 
             $sql = "SELECT `api` FROM `discordapi` WHERE `user_fav_id` = '".$user_id."'";
@@ -130,7 +133,7 @@ class discord {
                                         <div style="display: flex;justify-content: center;align-items:center">
                                             <span style="font-size : 30px;color : white;">เปิดการแจ้งเตือน </span>
                                             <label class="switch_main">
-                                                <input type="checkbox" id="noti_toggle" onchange="toggleNotification(this)"
+                                                <input type="checkbox" id="noti_toggle" onchange="toggleNotification()"
                                                 <?php echo ($user_noti_status == 1) ? 'checked' : ''; ?>>
                                                 <span class="slider_main"></span>
                                             </label>
@@ -139,24 +142,24 @@ class discord {
                                         <div style="display: flex;justify-content: center;align-items:center">
                                             <span class="toggle-text">แจ้งเตือนเมื่อเหลือ 10 นาที</span>
                                             <label class="switch_sub">
-                                                <input type="checkbox" id="noti_toggle" onchange="toggleNotification(this)"
-                                                <?php echo ($user_noti_status == 1) ? 'checked' : ''; ?>>
+                                                <input type="checkbox" id="noti_toggle_10" onchange="toggleNotification()"
+                                                <?php echo ($user_noti_status_10 == 1) ? 'checked' : ''; ?>>
                                                 <span class="slider"></span>
                                             </label>
                                         </div>
                                         <div style="display: flex;justify-content: center;align-items:center">
                                                 <span class="toggle-text">แจ้งเตือนเมื่อเหลือ 30 นาที</span>
                                                 <label class="switch_sub">
-                                                    <input type="checkbox" id="noti_toggle" onchange="toggleNotification(this)"
-                                                    <?php echo ($user_noti_status == 1) ? 'checked' : ''; ?>>
+                                                    <input type="checkbox" id="noti_toggle_30" onchange="toggleNotification()"
+                                                    <?php echo ($user_noti_status_30 == 1) ? 'checked' : ''; ?>>
                                                     <span class="slider"></span>
                                                 </label>
                                         </div>
                                         <div style="display: flex;justify-content: center;align-items:center">
                                                 <span class="toggle-text" style="">แจ้งเตือนเมื่อเหลือ 60 นาที</span>
                                                 <label class="switch_sub">
-                                                    <input type="checkbox" id="noti_toggle" onchange="toggleNotification(this)"
-                                                    <?php echo ($user_noti_status == 1) ? 'checked' : ''; ?>>
+                                                    <input type="checkbox" id="noti_toggle_60" onchange="toggleNotification()"
+                                                    <?php echo ($user_noti_status_60 == 1) ? 'checked' : ''; ?>>
                                                     <span class="slider"></span>
                                                 </label>
                                         </div>
@@ -183,24 +186,7 @@ class discord {
                                     </div>
                                
                 </form>
-            </div>    
-
-            <script>
-            function toggleNotification(checkbox) {
-                let isChecked = checkbox.checked ? 1 : 0;
-                
-                isNotificationEnabled = checkbox.checked;
-
-                fetch('/gdrt/src/savenoti.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: 'noti_status=' + isChecked
-                });
-            }
-        </script>
-            
+            </div>
             <?php
     } 
     
@@ -258,4 +244,6 @@ function insert() {
 
     
 }
+
  ?>
+<script src="/gdrt/src/js/logic.js"></script>
