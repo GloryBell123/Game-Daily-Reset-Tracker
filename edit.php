@@ -175,7 +175,7 @@ class edit
             echo '<script>
                 setTimeout(function() {
                 swal({
-                    title: "รหัสไม่ตรงกัน",
+                    title: "รหัสผ่านไม่ตรงกัน",
                     type: "error"
                 }, function() {
                     window.location = "/gdrt/src/edit/password";
