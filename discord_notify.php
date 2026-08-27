@@ -4,7 +4,7 @@ include 'connect.php';
 $conn = new connect();
         
 
-        $sql = "SELECT `discordapi`.`api` , `user_fav`.`user_id` , `user_fav`.`game_id` , `user`.`noti_status` , `game_list`.`name` as `game_name` , `game_list`.`reset_time` , `game_list`.`timezone`
+        $sql = "SELECT `discordapi`.`api` , `user_fav`.`user_id` , `user_fav`.`game_id` , `user`.`noti_status` , `user`.`noti_60` , `user`.`noti_30` , `user`.`noti_10` , `game_list`.`name` as `game_name` , `game_list`.`reset_time` , `game_list`.`timezone`
                 FROM `discordapi`
                 INNER JOIN `user_fav` ON `discordapi`.`user_fav_id` = `user_fav`.`user_id`
                 INNER JOIN `user` ON `user_fav`.`user_id` = `user`.`id`
@@ -17,26 +17,49 @@ $conn = new connect();
             $gamename = $cdr['game_name'];
             $resettime = $cdr['reset_time'];
             $timezone = $cdr['timezone'];
+            $noti60 = $cdr['noti_60'];
+            $noti30 = $cdr['noti_30'];
+            $noti10 = $cdr['noti_10'];
             
-            if (isTimeRemainingOneHour($resettime, $timezone)) {
-            $message = [
-            "username" => "Game Daily Reset Tracker",
-            "content" => "⏰ แจ้งเตือนเวลารีเซ็ตเกม",
-            "embeds" => [[
-                "title" => $gamename,
-                "description" => "กำลังจะรีเซ็ตในอีก 1 ชั่วโมง",
-                "color" => 16753920,
-                "fields" => [
-                    ["name" => "Status", "value" => "ใกล้หมดเวลา", "inline" => true]
-                ],
-                "footer" => ["text" => "Game Daily Reset Tracker"],
-                "timestamp" => date(DATE_ATOM) ]]
-            ];
+            $diffSec = getRemainingSeconds($resettime, $timezone);
+            
+            $targetMinute = "";
+            $Text = "";
 
-            sendCurlToDiscord($webhookURL, $message);
-            } }
+            if ($noti60 == 1 && $diffSec >= 3590 && $diffSec <= 3610) {
+                $targetMinute = "1 ชั่วโมง";
+                $Text = "กำลังจะรีเซ็ตในอีก 1 ชั่วโมง";
+            } 
+            elseif ($noti30 == 1 && $diffSec >= 1790 && $diffSec <= 1810) {
+                $targetMinute = "30 นาที";
+                $Text = "กำลังจะรีเซ็ตในอีก 30 นาที";
+            } 
+            elseif ($noti10 == 1 && $diffSec >= 590 && $diffSec <= 610) {
+                $targetMinute = "10 นาที";
+                $Text = "กำลังจะรีเซ็ตในอีก 10 นาที";
+            }
+
+            if (!empty($targetMinute)) {
+                $message = [
+                    "username" => "Game Daily Reset Tracker",
+                    "content" => "⏰ แจ้งเตือนเวลารีเซ็ตเกม",
+                    "embeds" => [[
+                        "title" => $gamename,
+                        "description" => $Text,
+                        "color" => 16753920,
+                        "fields" => [
+                            ["name" => "Status", "value" => "ใกล้หมดเวลา", "inline" => true]
+                        ],
+                        "footer" => ["text" => "Game Daily Reset Tracker"],
+                        "timestamp" => date(DATE_ATOM) 
+                    ]]
+                ];
+
+                sendCurlToDiscord($webhookURL, $message);
+            } 
+        }
          
-            function isTimeRemainingOneHour(string $resettime, string $timezone) {
+        function getRemainingSeconds(string $resettime, string $timezone) {
             list($resetHours, $resetMinutes) = explode(':', $resettime);
 
             $tzOffset = 0;
@@ -48,7 +71,7 @@ $conn = new connect();
 
             $nowUtc = time();
             
-            $targetUtcTimestamp = gmmktime(intval($resetHours) - $tzOffset, intval($resetMinutes), 0,  // คำนวณชั่วโมงในรูปแบบ UTC
+            $targetUtcTimestamp = gmmktime(intval($resetHours) - $tzOffset, intval($resetMinutes), 0,  
             gmdate('m', $nowUtc),
             gmdate('d', $nowUtc),
             gmdate('Y', $nowUtc));
@@ -57,14 +80,10 @@ $conn = new connect();
                 $targetUtcTimestamp += 86400;
             }
 
-            $diffSec = $targetUtcTimestamp - $nowUtc;   // ผลต่าง
+            $diffSec = $targetUtcTimestamp - $nowUtc;   
 
-            if ($diffSec >= 3590 && $diffSec <= 3610) {
-                return true;
-            }
-
-            return false;
-            }
+            return $diffSec;
+        }
 
         function sendCurlToDiscord(string $url, array $data) {
         $ch = curl_init($url);                                              // $ch คือตัวแปรการเชื่อมต่อ
