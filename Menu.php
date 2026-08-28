@@ -2,15 +2,44 @@
      * {
         font-family: 'Kanit', sans-serif;
     }
+
+    .brand-img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .brand-text {
+        font-size: 1.9rem;
+    }
+
+    .profile-avatar {
+        width: 70px;
+        height: 70px;
+    }
+
+    @media (max-width: 576px) {
+    .brand-img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .brand-text {
+        font-size: 0.9rem; /* ย่อขนาดตัวอักษรลงไม่ให้แน่นเกินไป */
+    }
+    
+    .profile-avatar {
+        width: 45px;
+        height: 45px;
+    }
+    }
     </style>
-    <nav class="navbar navbar-expand-lg"  style="padding-top: 10px;">
-        <div class="container-fluid" style="height: 70px;display: flex;align-items: center;justify-content: space-between;">
+    <nav class="navbar navbar-dark">
+        <div class="container-fluid d-flex justify-content-between align-items-center"">
 
-            <div style="height: 70px;display: flex;align-items: center;padding-left:10px;gap:10px">
-                <img draggable="false" src="images/clock.png" class="search-icon" alt="Error" style="width:50px;height:50px;">
-                <span style="color: white;font-size: 40px;">GAME DAILY RESET TRACKER</span>
+            <div class="navbar-brand d-flex align-items-center">
+                <img draggable="false" src="images/clock.png" alt="Error" class="brand-img me-2">
+                <span class="brand-text text-white fw-bold">GAME DAILY RESET TRACKER</span>
             </div>
-
             <?php
             require_once ('connect.php');
             if (isset($_SESSION['username'])) {
@@ -26,11 +55,10 @@
                 $cdr = $res -> fetch() ;
         ?> 
 
-            <div style="display: flex; flex-direction: column; align-items: center; position: relative; ">
-                <div data-bs-toggle="dropdown" style="width: 70px; height: 70px; cursor: pointer;">
-                    <img draggable="false" src="images/profile_image/<?php echo $cdr['profile']; ?>.png" alt="Error" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+            <div class="d-flex flex-column align-items-center position-relative">
+                <div data-bs-toggle="dropdown" class="profile-avatar" style="cursor: pointer;">
+                    <img draggable="false" src="images/profile_image/<?php echo $cdr['profile']; ?>.png" alt="Error" style="width: 100%; height: 100%;border-radius: 50%;">
                 </div>
-                    
                 <ul class="dropdown-menu dropdown-menu-end" style="margin-top: -25px;">
                     <li>
                         <a class="dropdown-item" style="border-bottom: 2px dashed; text-align: center;"><?php echo $username;?></a>
@@ -53,9 +81,17 @@
 
                 else{       // ก่อน login
                     ?>
-                <div>
-                    <img draggable="false" src="images/P.png" style="width:35px;height:35px">
-                    <a href="logre/login_form" class="btn btn-outline-light" style="border: 0;font-size: 20px"> Login / Register </a>
+
+                <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar1">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div id="navbar1" class="collapse navbar-collapse">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <img draggable="false" src="images/P.png" style="width:35px;height:35px">
+                            <a href="logre/login_form" class="btn btn-outline-light" style="border : none"> Login / Register </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>

@@ -4,9 +4,6 @@
         font-family: 'Kanit', sans-serif;
     }
 
-    .container {
-        width : 1300px;
-    }
     
     .dropdown {
         margin-left: 20px;
@@ -20,47 +17,85 @@
         background-color:#545454
     }
 
-    .dropdown:hover .dropbtn {
-        background-color: #00f2ff;
-        color : black;
-        transition : 0.3s;
-        box-shadow: #00f2ff;
+    .glass-box {
+        background-color: #334155;
+        border: 1px solid #00f2ff;
+        border-radius: 20px;
     }
 
-
-    .dropdown-content {
-        display: none;     
+    .search-icon {
         position: absolute;
-        background-color: rgba(255, 255, 255, 0.6);
-        z-index: 1;
-        width: 710px;
-        border-radius: 30px;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        z-index: 5;
+    }
+
+    .search-input {
+        border: 0;
+        padding-left: 50px !important;
+        height: 50px;
+        font-size: 1.1rem;
+        border-radius: 25px;
     }
     
-    .dropdown:hover .dropdown-content {
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
+    .btn-theme {
+        background-color: #545454;
+        color: #00f2ff;
+        border: 1px solid #00f2ff;
+        border-radius: 45px;
+        height: 50px;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-theme:hover, .btn-theme:focus {
+        background-color: #00f2ff;
+        color: #000;
+        box-shadow: 0 0 10px #00f2ff;
+        border-radius: 45px;
     }
 
-    .dropdown-content form {
-        display: flex;
-        flex-wrap: wrap;          /* ถ้าพื้นที่ไม่พอก็ให้ขึ้นบรรทัดใหม่ */
-        justify-content: left;
-        gap: 10px;                /* เว้นระยะห่างระหว่างปุ่มซ้าย-ขวา-บน-ล่าง */
-        padding: 10px;            /* เว้นระยะขอบในของกล่อง */
+    @media (min-width: 700px) {
+        .dropdown:hover .custom-dropdown-menu {
+            display: block;
+            margin-top: 0px;
+        }
     }
-    .dropdown-content form input {
-        border: none;
-        height: 30px;
-        width: 130px;
-        border-radius: 30px;
-        background-color: #545454;
-        color: white;
-        cursor: pointer;
-        transition: background 0.2s;
-        
+
+    .custom-dropdown-menu {
+        background-color: rgba(255,255,255,0.5);
+        backdrop-filter: blur(5px);
+        border-radius: 20px;
+        max-width: 710px;
+        width: 600px;
+    }   
+
+     @media (max-width: 450px) {
+        .custom-dropdown-menu {
+        background-color: rgba(255,255,255,0.5);
+        backdrop-filter: blur(5px);
+        border-radius: 20px;
+        max-width: 450px;
+        width: 300px;
+    } 
     }
+
+    .btn-tag {
+            border: none;
+            height: 35px;
+            border-radius: 20px;
+            background-color: #545454;
+            color: white;
+            transition: background 0.2s;
+        }
+
+    .btn-tag:hover {
+            background-color: #00f2ff;
+            color: black;
+        }
 
     .main {
         display : grid;
@@ -91,58 +126,69 @@ class home
  ?>
  <div class="container">
 
-    <div style="padding: 10px;background-color: #334155;border: 1px #00f2ff solid;border-radius: 20px;width:420px;display:flex;justify-content:center">
-        <div style="background-color:white;width:400px;text-align:center;border-radius: 30px;height:40px;line-height: 40px;font-size:25px;">
-            <p style="display: inline-block;">Your Current Time : </p>
-            <p style="display: inline-block" id="current-local-time"></p>
-        </div>
-    </div>
-    <div style="margin-top: 10px;padding: 10px 0px 10px 10px;position: relative;display: flex;align-items: center;background-color: #334155;border-radius:20px;width:1000px;border: 1px #00f2ff solid;">
-        
-        <form method="GET">
-            <img src="images/mag.png" alt="Error" style="width:40px;height:40px;position: absolute;margin-left: 10px;margin-top: 5px;">
-            <input type="text" placeholder="Search for a game...." name="searchbar" value="<?php echo isset($_GET['searchbar']) ? htmlspecialchars($_GET['searchbar']) : ''; ?>" style="border: 0px;padding: 10px 10px 10px 55px;width: 570px;height: 50px;font-size:20px;border-radius: 20px;">
-        </form>
-        <div class="dropdown">
-            <button class="dropbtn" type="button" data-bs-toggle="dropdown" style="border-radius: 45px;width:100px;height:50px;font-size:25px;">All <img src="images/arrow.png" style="height: 20px;width: 20px;"></button>
-            <div class="dropdown-content">
-                <form method="GET">
-                    <input type="submit" name="searchtag" value="Gacha">
-                    <input type="submit" name="searchtag" value="MMO">
-                    <input type="submit" name="searchtag" value="RPG">
-                    <input type="submit" name="searchtag" value="Open World">
-                    <input type="submit" name="searchtag" value="Action">
-                    <input type="submit" name="searchtag" value="Turn-based">
-                    <input type="submit" name="searchtag" value="Idle">
-                    <input type="submit" name="searchtag" value="Shooter">
-                    <input type="submit" name="searchtag" value="Tactical">
-                    <input type="submit" name="searchtag" value="Strategy">
-                    <input type="submit" name="searchtag" value="Tower Defense">
-                    <input type="submit" name="searchtag" value="Card Battle">
-                    <input type="submit" name="searchtag" value="Hack and Slash">
-                    <input type="submit" name="searchtag" value="MOBA">
-                    <input type="submit" name="searchtag" value="Survival">
-                    <input type="submit" name="searchtag" value="Horror">
-                    <input type="submit" name="searchtag" value="Battle Royale">
-                    <input type="submit" name="searchtag" value="FPS">
-                    <input type="submit" name="searchtag" value="TPS">
-                    <input type="submit" name="searchtag" value="Base Building">
-                    <input type="submit" name="searchtag" value="Side-scrolling">
-                    <input type="submit" name="searchtag" value="AR">
-                </form>
+    <div class="row">
+            <div class="col-12 col-md-6 col-lg-5 col-xl-4">
+                <div class="glass-box p-2 text-center">
+                    <div class="bg-white rounded-pill py-1 fs-5 fw-bold text-dark d-flex justify-content-center align-items-center">
+                        <span class="me-2">Your Current Time :</span>
+                        <span id="current-local-time"></span>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div style='margin-left: 20px;border-radius: 45px;width:100px;height:50px;font-size:25px;background-color:#545454;border: 1px #00f2ff solid;display : flex;justify-content:center;align-items:center'>
-            <form method="GET">
-                <input style='border: none;background-color: #545454;color :white;width:100px;border-radius:45px' type="submit" value="Clear">
-            </form>
-        </div>
-        <div style='margin-left: 20px;border-radius: 45px;width:150px;height:50px;font-size:25px;background-color:#545454;border: 1px #00f2ff solid;display : flex;justify-content:center;align-items:center'>
-            <form method="GET">
-                <input style='border: none;background-color: #545454;color : yellow;' type="submit" name="searchfav" value="Favorite">
-            </form>
-        </div>
     </div>
+    <div class="glass-box p-2 mt-2">
+            <div class="row align-items-center">
+                <div class="col-12 col-lg-6 position-relative">
+                    <form method="GET">
+                        <img src="images/mag.png" alt="Error" class="search-icon">
+                        <input type="text" placeholder="Search for a game...." class="form-control search-input" name="searchbar" value="<?php echo isset($_GET['searchbar']) ? htmlspecialchars($_GET['searchbar']) : ''; ?>">
+                    </form>
+                </div>
+
+                <div class="col-12 col-lg-6 d-flex flex-wrap gap-2 align-items-center">
+                    <div class="dropdown flex-grow-1 flex-sm-grow-0">
+                        <button class="btn btn-theme w-100 dropdown-toggle px-4" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            All
+                        </button>
+                        <div class="dropdown-menu custom-dropdown-menu p-3">
+                            <form method="GET" class="d-flex flex-wrap gap-2">
+                                <input type="submit" name="searchtag" value="Gacha" class="btn-tag px-3">
+                                <input type="submit" name="searchtag" value="MMO" class="btn-tag px-3">
+                                <input type="submit" name="searchtag" value="RPG" class="btn-tag px-3">
+                                <input type="submit" name="searchtag" value="Open World" class="btn-tag px-3">
+                                <input type="submit" name="searchtag" value="Action" class="btn-tag px-3">
+                                <input type="submit" name="searchtag" value="Turn-based" class="btn-tag px-3">
+                                <input type="submit" name="searchtag" value="Idle" class="btn-tag px-3">
+                                <input type="submit" name="searchtag" value="Shooter" class="btn-tag px-3">
+                                <input type="submit" name="searchtag" value="Tactical" class="btn-tag px-3">
+                                <input type="submit" name="searchtag" value="Strategy" class="btn-tag px-3">
+                                <input type="submit" name="searchtag" value="Tower Defense" class="btn-tag px-3">
+                                <input type="submit" name="searchtag" value="Card Battle" class="btn-tag px-3">
+                                <input type="submit" name="searchtag" value="Hack and Slash" class="btn-tag px-3">
+                                <input type="submit" name="searchtag" value="MOBA" class="btn-tag px-3">
+                                <input type="submit" name="searchtag" value="Survival" class="btn-tag px-3">
+                                <input type="submit" name="searchtag" value="Horror" class="btn-tag px-3">
+                                <input type="submit" name="searchtag" value="Battle Royale" class="btn-tag px-3">
+                                <input type="submit" name="searchtag" value="FPS" class="btn-tag px-3">
+                                <input type="submit" name="searchtag" value="TPS" class="btn-tag px-3">
+                                <input type="submit" name="searchtag" value="Base Building" class="btn-tag px-3">
+                                <input type="submit" name="searchtag" value="Side-scrolling" class="btn-tag px-3">
+                                <input type="submit" name="searchtag" value="AR" class="btn-tag px-3">
+                            </form>
+                        </div>
+                    </div>
+
+                <form method="GET" class="flex-grow-1 flex-sm-grow-0">
+                    <input class="btn btn-theme w-100 px-4 text-white" type="submit" value="Clear">
+                </form>
+                <form method="GET" class="flex-grow-1 flex-sm-grow-0">
+                    <input class="btn btn-theme w-100 px-4 text-warning" type="submit" name="searchfav" value="Favorite">
+                </form>
+
+            </div>
+    </div>
+    
+</div>
     
     
         <?php
