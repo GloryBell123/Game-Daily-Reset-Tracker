@@ -33,7 +33,7 @@
     }
     }
     </style>
-    <nav class="navbar navbar-dark">
+    <nav class="navbar navbar-dark navbar-expand-lg">
         <div class="container-fluid d-flex justify-content-between align-items-center"">
 
             <div class="navbar-brand d-flex align-items-center">

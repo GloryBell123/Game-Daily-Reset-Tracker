@@ -6,7 +6,6 @@
 
     
     .dropdown {
-        margin-left: 20px;
         border-radius: 30px;
         display: block;
     }
@@ -84,36 +83,38 @@
     }
 
     .btn-tag {
-            border: none;
-            height: 35px;
-            border-radius: 20px;
-            background-color: #545454;
-            color: white;
-            transition: background 0.2s;
-        }
+        border: none;
+        height: 35px;
+        border-radius: 20px;
+        background-color: #545454;
+        color: white;
+        transition: background 0.2s;
+    }
 
     .btn-tag:hover {
-            background-color: #00f2ff;
-            color: black;
-        }
-
-    .main {
-        display : grid;
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        gap : 30px;
-        margin-top: 10px;
+        background-color: #00f2ff;
+        color: black;
     }
 
     .boxbox {
-        height: 350px;
-        display: flex;
         border: 1px #00f2ff solid;
         background-color: #334155;
         color: #1f2937;
-        justify-content: center;
         border-radius : 20px;
     }
 
+    .box-font {
+        color:white;
+        padding : 15px
+    }
+
+    @media (max-width: 768px) {
+    .box-font {
+        color:white;
+        padding : 15px;
+        font-size : 10px; 
+    }
+    }
   </style>
 </head>
 <?php
@@ -145,7 +146,7 @@ class home
                     </form>
                 </div>
 
-                <div class="col-12 col-lg-6 d-flex flex-wrap gap-2 align-items-center">
+                <div class="col-12 col-lg-6 d-flex gap-2 align-items-center mt-2 mt-lg-0">
                     <div class="dropdown flex-grow-1 flex-sm-grow-0">
                         <button class="btn btn-theme w-100 dropdown-toggle px-4" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             All
@@ -177,15 +178,13 @@ class home
                             </form>
                         </div>
                     </div>
-
-                <form method="GET" class="flex-grow-1 flex-sm-grow-0">
-                    <input class="btn btn-theme w-100 px-4 text-white" type="submit" value="Clear">
-                </form>
-                <form method="GET" class="flex-grow-1 flex-sm-grow-0">
-                    <input class="btn btn-theme w-100 px-4 text-warning" type="submit" name="searchfav" value="Favorite">
-                </form>
-
-            </div>
+                        <form method="GET" class="flex-grow-1 flex-sm-grow-0">
+                            <input class="btn btn-theme w-100 px-4 text-white" type="submit" value="Clear">
+                        </form>
+                        <form method="GET" class="flex-grow-1 flex-sm-grow-0">
+                            <input class="btn btn-theme w-100 px-4 text-warning" type="submit" name="searchfav" value="Favorite">
+                        </form>
+                </div>
     </div>
     
 </div>
@@ -292,28 +291,32 @@ class home
 
         ?>
         
-            <div class="main">
+            <div class="row g-4 mt-0">
                 <?php if (count($game_data) > 0) {
                     foreach ($game_data as $game) {
                     $is_favorited = in_array($game['id'], $favorites);
                 ?>
-                    <div class="boxbox">
-                        <div id="container-<?php echo $game['id']; ?>"class="game-container"
-                        data-id="<?php echo $game['id']; ?>"
-                        data-is-fav="<?php echo $is_favorited ? 'true' : 'false'; ?>"
-                        data-reset="<?php echo $game['reset']; ?>"
-                        data-timezone="<?php echo $game['timezone']; ?>">
-                            <div style="margin-bottom: 15px; padding: 10px; color:white;">
-                            <center><img style="width: 100%;height:200px;border-radius:20px" src="images/profile_game/<?php echo $game['pic']; ?>.jpg" alt="error"></center>
-                            <center><div style="font-weight: bold; font-size: 1.2em;"><?php echo $game['name']; ?></div></center>
-                            <center><div style="margin-top: 5px; opacity: 0.5;"><?php echo $game['tag_name']; ?></div></center>
-                            <div style="margin-top: 5px;">Server Reset Time : <?php echo $game['timezone']; ?> | <?php echo $game['reset']; ?> น.</div>
-                            <div style="display : flex;align-items: center;justify-content: space-between;">
-                                <div style="margin-top: 5px;width:250px">รีเซ็ตในอีก: <span class="time_left" style="font-weight: bold; font-size: 1.1em;"></span></div>
-                                <button class="fav-btn" style="height:30px; border:none; background:none;" data-game-id="<?php echo $game['id'];?>">
-                                    <i class="fa fa-heart"></i>
-                                </button> <!-- fav button -->
-                            </div>
+                    <div class="col-6 col-md-6 col-lg-4">
+                        <div class="boxbox">
+                            <div id="container-<?php echo $game['id']; ?>"class="game-container"
+                            data-id="<?php echo $game['id']; ?>"
+                            data-is-fav="<?php echo $is_favorited ? 'true' : 'false'; ?>"
+                            data-reset="<?php echo $game['reset']; ?>"
+                            data-timezone="<?php echo $game['timezone']; ?>">
+                            <img style="width: 100%;height:180px;border-radius:20px;" src="images/profile_game/<?php echo $game['pic']; ?>.jpg" alt="error">
+                                <div class="box-font d-flex flex-column">
+                                    <div class="d-flex flex-column align-items-center">
+                                        <div style="font-weight: bold; font-size: 1.2em;"><?php echo $game['name']; ?></div>
+                                        <div style="margin-top: 5px;"><?php echo $game['tag_name']; ?></div>
+                                    </div>
+                                    <div style="margin-top: 5px;">Server Reset Time : <?php echo $game['timezone']; ?> | <?php echo $game['reset']; ?> น.</div>
+                                    <div style="display : flex;align-items: center;justify-content: space-between;">
+                                        <div style="margin-top: 5px">รีเซ็ตในอีก: <span class="time_left" style="font-weight: bold; font-size: 1.1em;"></span></div>
+                                        <button class="fav-btn" style="height:30px; border:none; background:none;" data-game-id="<?php echo $game['id'];?>">
+                                            <i class="fa fa-heart"></i>
+                                        </button> <!-- fav button -->
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -323,7 +326,8 @@ class home
                     <div style='color:white;font-size:35px;text-align:center'>❌ ไม่พบเกมที่คุณค้นหา</div>
                     <div></div>
             <?php } ?>
-            </div>
+                </div>
+                
             </div>
 <?php
     }

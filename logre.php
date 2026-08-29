@@ -41,7 +41,24 @@
             position: relative;
             display: inline-block;
         }
-
+        .title {
+            font-size: 70px;
+        }
+        @media (max-width: 576px) {
+        .title {
+            font-size: 22px;
+        }
+        }
+        .title-img {
+            width:90px;
+            height:90px;
+        }
+        @media (max-width: 576px) {
+        .title-img {
+            width:30px;
+            height:30px;
+        }
+        }
     </style>
 </head>
 
@@ -53,11 +70,12 @@ class logre
 
 function login_form()
  {
- ?>
-        <div style="display: flex;justify-content: center;">
-                <p style="color: white;font-size: 70px;"><img draggable="false" src="/gdrt/src/images/rocket.png" alt="Error" style="width:90px;height:90px;">GAME DAILY RESET TRACKER</p>
+ ?>         
+        <div class="d-flex justify-content-center">
+            <span class="title" style="color: white;"><img draggable="false" src="/gdrt/src/images/rocket.png" alt="Error" class="title-img">GAME DAILY RESET TRACKER</span>
         </div>
-        <div class="container" style="display: flex;justify-content: center;width: 400px;padding: 20px;border: 1px #00f2ff solid;border-radius:45px;background-color: #334155;">
+        <div class="container" style="width: 400px;padding: 20px;border: 1px #00f2ff solid;border-radius:45px;background-color: #334155;">
+            <div class="d-flex justify-content-center">
             <form action='' method='post'>
                 <table>
                     <tr>
@@ -97,6 +115,7 @@ function login_form()
                     </tr>
                 </table>
             </form>
+            </div>
         </div>    
 <?php
  }
