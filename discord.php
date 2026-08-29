@@ -169,7 +169,7 @@ class discord {
                                             <input placeholder="กรอก Url Webhook" name="noti" type="url" value="<?php echo htmlspecialchars($user_webhook_url); ?>"
                                             pattern="https?://(www\.)?(discord|discordapp)\.com/api/webhooks/.*"  
                                             title="กรุณากรอก Discord Webhook URL ให้ถูกต้อง (ขึ้นต้นด้วย https://discord.com/api/webhooks/)" 
-                                            style="width: 300px; height: 45px; border-radius: 45px; padding-left: 15px; border: 0px; margin: 0 10px;" required
+                                            style="width: 300px; height: 45px; border-radius: 45px; padding-left: 15px; border: 0px; margin: 0 10px;"
                                             >
                                             
                                             <div style="width: 45px; height: 45px; background: #545454; border-radius: 45px; display: flex; justify-content: center; align-items: center;">
@@ -194,22 +194,43 @@ function insert() {
     $noti = $_REQUEST['noti'];
     $id = $_SESSION['ssid'];
     $conn   = new connect();
-    $sql = "select `user_fav_id` from `discordapi` where `user_fav_id` = '".$id."'";
+    $sql = "select `user_fav_id` , `api` from `discordapi` where `user_fav_id` = '".$id."'";
     $res = $conn -> query($sql);
     $cdr = $res -> fetch();
     $check_user_id = $cdr['user_fav_id'];
+    $check_api = $cdr['api'];
     
     if ($noti == NULL) {
-        echo '<script>
-                 setTimeout(function() {
-                  swal({
-                      title: "เพื่ม API ไม่สำเร็จ",
-                      type: "error"
-                  }, function() {
-                      window.location = "/gdrt/src/discord/notification";
-                  });
-                }, 200);
-            </script>'; }
+        if ($id == $check_user_id) {
+            if ($check_api != NULL) {
+                $sql = "UPDATE `discordapi` set `api` = '".$noti."' where  `user_fav_id` = '".$check_user_id."'";
+                $conn = new connect();
+                $res = $conn->query($sql);
+                echo '<script>
+                     setTimeout(function() {
+                      swal({
+                          title: "ลบ API สำเร็จ",
+                          type: "success"
+                      }, function() {
+                          window.location = "/gdrt/src/discord/notification";
+                      });
+                    }, 200);
+                </script>';
+            }
+            else {
+                echo '<script>
+                     setTimeout(function() {
+                      swal({
+                          title: "ไม่พบ API",
+                          type: "error"
+                      }, function() {
+                          window.location = "/gdrt/src/discord/notification";
+                      });
+                    }, 200);
+                </script>';
+            }
+        }
+    }
     elseif ($id == $check_user_id) {
         $sql = "UPDATE `discordapi` set `api` = '".$noti."' where  `user_fav_id` = '".$check_user_id."'";
 		$conn = new connect();
@@ -239,10 +260,8 @@ function insert() {
                   });
                 }, 200);
             </script>';
-             }
     }
-
-    
+    }
 }
 
  ?>
