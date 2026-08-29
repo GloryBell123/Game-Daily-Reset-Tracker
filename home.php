@@ -188,83 +188,89 @@ class home
     </div>
     
 </div>
-    
-    
         <?php
-        if (isset($_GET['searchbar']) && $_GET['searchbar'] !== '') {
-                $search_word = $_GET['searchbar']; 
-                $sql = "SELECT 
-                    `game_list`.`id` as `id`,
-                    `game_list`.`name` as `name`,
-                    `game_list`.`pic` as `pic` ,
-                    `game_list`.`timezone` as `timezone` ,
-                    `game_list`.`reset_time` as `reset_time` ,
-                    GROUP_CONCAT(`tag`.`name` SEPARATOR ' | ') as `tag_names`
-                    from `game_list`
-                    left join `game_tag` on `game_list`.`id` = `game_tag`.`game_id`
-                    left join `tag` on `game_tag`.`tag_id` = `tag`.`id`
-                    where `game_list`.`name` like '%".$search_word."%'
-                    group by `game_list`.`id`
-                    order by  `game_list`.`name`"; }
-    
-        elseif (isset($_GET['searchtag']) && $_GET['searchtag'] !== ''){
-                $search_tag = $_GET['searchtag'];
-                if ($search_tag !== '') {
-                $sql = "SELECT 
-                    `game_list`.`id` as `id`,
-                    `game_list`.`name` as `name`,
-                    `game_list`.`pic` as `pic` ,
-                    `game_list`.`timezone` as `timezone` ,
-                    `game_list`.`reset_time` as `reset_time` ,
-                    GROUP_CONCAT(`tag`.`name` SEPARATOR ' | ') as `tag_names`
-                    from `game_list`
-                    left join `game_tag` on `game_list`.`id` = `game_tag`.`game_id`
-                    left join `tag` on `game_tag`.`tag_id` = `tag`.`id`
-                    where `game_list`.`id` IN (
-                        SELECT `game_tag`.`game_id` 
-                        FROM `game_tag`
-                        INNER JOIN `tag` ON `game_tag`.`tag_id` = `tag`.`id`
-                        WHERE `tag`.`name` = '".$search_tag."'
-                    )
-                    group by `game_list`.`id`
-                    order by `game_list`.`name`"; }
-        }
-        elseif (isset($_GET['searchfav']) && $_GET['searchfav'] !== ''){
-                $search_fav = $_GET['searchfav'];
-                if ($search_fav !== '') {
-                    $current_user_id = isset($_SESSION['ssid']) ? intval($_SESSION['ssid']) : 0;
-                $sql = "SELECT 
-                    `game_list`.`id` as `id`,
-                    `game_list`.`name` as `name`,
-                    `game_list`.`pic` as `pic` ,
-                    `game_list`.`timezone` as `timezone` ,
-                    `game_list`.`reset_time` as `reset_time` ,
-                    GROUP_CONCAT(`tag`.`name` SEPARATOR ' | ') as `tag_names`
-                    from `game_list`
-                    left join `game_tag` on `game_list`.`id` = `game_tag`.`game_id`
-                    left join `tag` on `game_tag`.`tag_id` = `tag`.`id`
-                    WHERE `game_list`.`id` IN (
-                            SELECT `user_fav`.`game_id` 
-                            FROM `user_fav` 
-                            WHERE `user_fav`.`user_id` = ".$current_user_id."
+            if (isset($_GET['searchbar']) && $_GET['searchbar'] !== '') {
+            $search_word = trim($_GET['searchbar']); 
+            
+            $sql = "SELECT 
+                `game_list`.`id` as `id`,
+                `game_list`.`name` as `name`,
+                `game_list`.`pic` as `pic`,
+                `game_list`.`timezone` as `timezone`,
+                `game_list`.`reset_time` as `reset_time`,
+                GROUP_CONCAT(`tag`.`name` SEPARATOR ' | ') as `tag_names`
+            FROM `game_list`
+            LEFT JOIN `game_tag` ON `game_list`.`id` = `game_tag`.`game_id`
+            LEFT JOIN `tag` ON `game_tag`.`tag_id` = `tag`.`id`
+            GROUP BY 
+                `game_list`.`id`, 
+                `game_list`.`name`, 
+                `game_list`.`pic`, 
+                `game_list`.`timezone`, 
+                `game_list`.`reset_time`
+            HAVING 
+                `game_list`.`name` LIKE '%" . $search_word . "%' 
+                OR `tag_names` LIKE '%" . $search_word . "%'
+            ORDER BY `game_list`.`name`";
+            }
+            elseif (isset($_GET['searchtag']) && $_GET['searchtag'] !== ''){
+                    $search_tag = $_GET['searchtag'];
+                    if ($search_tag !== '') {
+                    $sql = "SELECT
+                        `game_list`.`id` as `id`,
+                        `game_list`.`name` as `name`,
+                        `game_list`.`pic` as `pic` ,
+                        `game_list`.`timezone` as `timezone` ,
+                        `game_list`.`reset_time` as `reset_time` ,
+                        GROUP_CONCAT(`tag`.`name` SEPARATOR ' | ') as `tag_names`
+                        from `game_list`
+                        left join `game_tag` on `game_list`.`id` = `game_tag`.`game_id`
+                        left join `tag` on `game_tag`.`tag_id` = `tag`.`id`
+                        where `game_list`.`id` IN (
+                            SELECT `game_tag`.`game_id`
+                            FROM `game_tag`
+                            INNER JOIN `tag` ON `game_tag`.`tag_id` = `tag`.`id`
+                            WHERE `tag`.`name` = '".$search_tag."'
                         )
-                    group by `game_list`.`id`
-                    order by `game_list`.`name`"; }
-        }
-        else {
-             $sql = "SELECT 
-                    `game_list`.`id` as `id`,
-                    `game_list`.`name` as `name`,
-                    `game_list`.`pic` as `pic` ,
-                    `game_list`.`timezone` as `timezone` ,
-                    `game_list`.`reset_time` as `reset_time` ,
-                    GROUP_CONCAT(`tag`.`name` SEPARATOR ' | ') as `tag_names`
-                    from `game_list`
-                    left join `game_tag` on `game_list`.`id` = `game_tag`.`game_id`
-                    left join `tag` on `game_tag`.`tag_id` = `tag`.`id`
-                    group by `game_list`.`id`
-                    order by `game_list`.`name`";
-        }
+                        group by `game_list`.`id`
+                        order by `game_list`.`name`"; }
+            } 
+            elseif (isset($_GET['searchfav']) && $_GET['searchfav'] !== ''){
+                    $search_fav = $_GET['searchfav'];
+                    if ($search_fav !== '') {
+                        $current_user_id = isset($_SESSION['ssid']) ? intval($_SESSION['ssid']) : 0;
+                    $sql = "SELECT 
+                        `game_list`.`id` as `id`,
+                        `game_list`.`name` as `name`,
+                        `game_list`.`pic` as `pic` ,
+                        `game_list`.`timezone` as `timezone` ,
+                        `game_list`.`reset_time` as `reset_time` ,
+                        GROUP_CONCAT(`tag`.`name` SEPARATOR ' | ') as `tag_names`
+                        from `game_list`
+                        left join `game_tag` on `game_list`.`id` = `game_tag`.`game_id`
+                        left join `tag` on `game_tag`.`tag_id` = `tag`.`id`
+                        WHERE `game_list`.`id` IN (
+                                SELECT `user_fav`.`game_id` 
+                                FROM `user_fav` 
+                                WHERE `user_fav`.`user_id` = ".$current_user_id."
+                            )
+                        group by `game_list`.`id`
+                        order by `game_list`.`name`"; }
+            }
+            else {
+                $sql = "SELECT 
+                        `game_list`.`id` as `id`,
+                        `game_list`.`name` as `name`,
+                        `game_list`.`pic` as `pic` ,
+                        `game_list`.`timezone` as `timezone` ,
+                        `game_list`.`reset_time` as `reset_time` ,
+                        GROUP_CONCAT(`tag`.`name` SEPARATOR ' | ') as `tag_names`
+                        from `game_list`
+                        left join `game_tag` on `game_list`.`id` = `game_tag`.`game_id`
+                        left join `tag` on `game_tag`.`tag_id` = `tag`.`id`
+                        group by `game_list`.`id`
+                        order by `game_list`.`name`";
+            }
 			$conn = new connect();
             //data
             $game_data = []; //Array
