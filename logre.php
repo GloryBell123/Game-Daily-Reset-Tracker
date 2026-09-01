@@ -144,7 +144,7 @@ function login_form()
                     <div class="d-flex justify-content-center mb-4">
                         <div class="inputwimg ">
                             <img draggable="false" src="/gdrt/src/images/nigga.png" alt="Error" class="img_input">
-                            <input required name="email" pattern="^[a-zA-Z0-9.]+@gmail\.com$" placeholder="กรุณากรอก Email" class="logre_input">
+                            <input required name="email" placeholder="กรุณากรอก Email" class="logre_input">
                         </div>
                     </div>
                     <div class="d-flex justify-content-center mb-3">
@@ -217,6 +217,7 @@ function logout() {
 function register_form()
 {
 ?>
+
     <div class="d-flex justify-content-center">
         <span class="title" style="color: white;"><img draggable="false" src="/gdrt/src/images/rocket.png" alt="Error" class="title-img">GAME DAILY RESET TRACKER</span>
     </div>
@@ -236,27 +237,27 @@ function register_form()
                     <div class="inputwimg ">
                         <img draggable="false" src="/gdrt/src/images/unlockkey.png" alt="Error" class="img_input">
                         <input required name="password" type="password" minlength="8" maxlength="12" placeholder="รหัสผ่าน" class="logre_input">
-                    </div>
-                </div>
+                    </div>  
+                </div>       
                 <div class="d-flex justify-content-center mb-4">
                     <div class="inputwimg ">
                         <img draggable="false" src="/gdrt/src/images/unlockkey.png" alt="Error" class="img_input">
                         <input required name="confirmpass" type="password" minlength="8" maxlength="12" autocomplete="off" placeholder="ยืนยันรหัสผ่าน" class="logre_input">
                     </div>
                 </div>
-                <div class="d-flex justify-content-center mb-3">
+                <div class="d-flex justify-content-center mb-4">
                     <div class="inputwimg ">
                         <img draggable="false" src="/gdrt/src/images/mail.png" alt="Error" class="img_input">
-                        <input required pattern="^[a-zA-Z0-9.]+@gmail\.com$" name="email" type="email" size="50" placeholder="Email" class="logre_input">
+                        <input required name="email" type="email" size="50" placeholder="Email" class="logre_input">
                     </div>
                 </div>
                 <div class="d-flex justify-content-center mb-3">
-                    <input class="logre_input_button" value="สมัครสมาชิก" type="submit" style="border: 3px lime solid;">
-                </div>    
-                <div class="d-flex justify-content-center gap-4"> 
+                    <input value="สมัครสมาชิก" type="submit" style="border: 3px lime solid; background:#545454; border-radius: 45px;color:#ffffff ;width:100px">
+                </div>
+                <div class="d-flex justify-content-center gap-4">    
                     <input class="logre_input_button" type='button' value='มีบัญชีอยู่แล้ว' onclick='window.open("/gdrt/src/logre/login_form","_self")' style="border: 3px cyan solid;">
-                    <input class="logre_input_button" type='button' value='กลับหน้าหลัก' onclick='window.open("/gdrt/src/home","_self")'  style="border: 3px #0f2ef5 solid;">
-                </div>      
+                    <input class="logre_input_button" type='button' value='กลับหน้าหลัก' onclick='window.open("/gdrt/src/home","_self")' style="border: 3px blue solid;">
+                </div>   
             </form>
         </div>
     </div>    
@@ -319,7 +320,7 @@ function register_form()
                 setTimeout(function() {
                 swal({
                     title: "รหัสผ่านไม่ตรงกัน",
-                    type: "warning"
+                    type: "error"
                 }, function() {
                     window.location = "";
                 });
