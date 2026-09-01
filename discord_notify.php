@@ -24,19 +24,19 @@ $conn = new connect();
             $diffSec = getRemainingSeconds($resettime, $timezone);
             
             $targetMinute = "";
-            $Text = "";
+            $timeleft = "";
 
             if ($noti60 == 1 && $diffSec >= 3590 && $diffSec <= 3610) {
                 $targetMinute = "1 ชั่วโมง";
-                $Text = "กำลังจะรีเซ็ตในอีก 1 ชั่วโมง";
+                $timeleft = "กำลังจะรีเซ็ตในอีก 1 ชั่วโมง";
             } 
             elseif ($noti30 == 1 && $diffSec >= 1790 && $diffSec <= 1810) {
                 $targetMinute = "30 นาที";
-                $Text = "กำลังจะรีเซ็ตในอีก 30 นาที";
+                $timeleft = "กำลังจะรีเซ็ตในอีก 30 นาที";
             } 
             elseif ($noti10 == 1 && $diffSec >= 590 && $diffSec <= 610) {
                 $targetMinute = "10 นาที";
-                $Text = "กำลังจะรีเซ็ตในอีก 10 นาที";
+                $timeleft = "กำลังจะรีเซ็ตในอีก 10 นาที";
             }
 
             if (!empty($targetMinute)) {
@@ -45,7 +45,7 @@ $conn = new connect();
                     "content" => "⏰ แจ้งเตือนเวลารีเซ็ตเกม",
                     "embeds" => [[
                         "title" => $gamename,
-                        "description" => $Text,
+                        "description" => $timeleft,
                         "color" => 16753920,
                         "fields" => [
                             ["name" => "เวลารีเซ็ต", "value" => $resettime . " นาฬิกา (" . $timezone . ")", "inline" => true]
