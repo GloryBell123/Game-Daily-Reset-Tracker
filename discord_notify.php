@@ -48,7 +48,7 @@ $conn = new connect();
                         "description" => $Text,
                         "color" => 16753920,
                         "fields" => [
-                            ["name" => "Status", "value" => "ใกล้หมดเวลา", "inline" => true]
+                            ["name" => "เวลารีเซ็ต", "value" => $resettime . " นาฬิกา (" . $timezone . ")", "inline" => true]
                         ],
                         "footer" => ["text" => "Game Daily Reset Tracker"],
                         "timestamp" => date(DATE_ATOM) 
