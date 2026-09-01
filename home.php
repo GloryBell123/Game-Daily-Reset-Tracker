@@ -72,7 +72,7 @@
         width: 600px;
     }   
 
-     @media (max-width: 450px) {
+    @media (max-width: 450px) {
         .custom-dropdown-menu {
         background-color: rgba(255,255,255,0.5);
         backdrop-filter: blur(5px);
@@ -145,126 +145,139 @@ class home
                         <input type="text" placeholder="Search for a game...." class="form-control search-input" name="searchbar" value="<?php echo isset($_GET['searchbar']) ? htmlspecialchars($_GET['searchbar']) : ''; ?>">
                     </form>
                 </div>
-
-                <div class="col-12 col-lg-6 d-flex gap-2 align-items-center mt-2 mt-lg-0">
-                    <div class="dropdown flex-grow-1 flex-sm-grow-0">
-                        <button class="btn btn-theme w-100 dropdown-toggle px-4" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            All
-                        </button>
-                        <div class="dropdown-menu custom-dropdown-menu p-3">
-                            <form method="GET" class="d-flex flex-wrap gap-2">
-                                <input type="submit" name="searchtag" value="Gacha" class="btn-tag px-3">
-                                <input type="submit" name="searchtag" value="MMO" class="btn-tag px-3">
-                                <input type="submit" name="searchtag" value="RPG" class="btn-tag px-3">
-                                <input type="submit" name="searchtag" value="Open World" class="btn-tag px-3">
-                                <input type="submit" name="searchtag" value="Action" class="btn-tag px-3">
-                                <input type="submit" name="searchtag" value="Turn-based" class="btn-tag px-3">
-                                <input type="submit" name="searchtag" value="Idle" class="btn-tag px-3">
-                                <input type="submit" name="searchtag" value="Shooter" class="btn-tag px-3">
-                                <input type="submit" name="searchtag" value="Tactical" class="btn-tag px-3">
-                                <input type="submit" name="searchtag" value="Strategy" class="btn-tag px-3">
-                                <input type="submit" name="searchtag" value="Tower Defense" class="btn-tag px-3">
-                                <input type="submit" name="searchtag" value="Card Battle" class="btn-tag px-3">
-                                <input type="submit" name="searchtag" value="Hack and Slash" class="btn-tag px-3">
-                                <input type="submit" name="searchtag" value="MOBA" class="btn-tag px-3">
-                                <input type="submit" name="searchtag" value="Survival" class="btn-tag px-3">
-                                <input type="submit" name="searchtag" value="Horror" class="btn-tag px-3">
-                                <input type="submit" name="searchtag" value="Battle Royale" class="btn-tag px-3">
-                                <input type="submit" name="searchtag" value="FPS" class="btn-tag px-3">
-                                <input type="submit" name="searchtag" value="TPS" class="btn-tag px-3">
-                                <input type="submit" name="searchtag" value="Base Building" class="btn-tag px-3">
-                                <input type="submit" name="searchtag" value="Side-scrolling" class="btn-tag px-3">
-                                <input type="submit" name="searchtag" value="AR" class="btn-tag px-3">
-                            </form>
+                <div class="col-12 col-lg-6 d-flex gap-2 align-items-center mt-2 mt-lg-0">  
+                    <div class="col-3">
+                        <div class="dropdown flex-grow-1 flex-sm-grow-0">
+                            <button class="btn-theme w-100 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                All
+                            </button>
+                            <div class="dropdown-menu custom-dropdown-menu p-3 col-12">
+                                <form method="GET" class="d-flex flex-wrap gap-2">
+                                    <input type="submit" name="searchtag" value="Gacha" class="btn-tag px-3">
+                                    <input type="submit" name="searchtag" value="MMO" class="btn-tag px-3">
+                                    <input type="submit" name="searchtag" value="RPG" class="btn-tag px-3">
+                                    <input type="submit" name="searchtag" value="Open World" class="btn-tag px-3">
+                                    <input type="submit" name="searchtag" value="Action" class="btn-tag px-3">
+                                    <input type="submit" name="searchtag" value="Turn-based" class="btn-tag px-3">
+                                    <input type="submit" name="searchtag" value="Idle" class="btn-tag px-3">
+                                    <input type="submit" name="searchtag" value="Shooter" class="btn-tag px-3">
+                                    <input type="submit" name="searchtag" value="Tactical" class="btn-tag px-3">
+                                    <input type="submit" name="searchtag" value="Strategy" class="btn-tag px-3">
+                                    <input type="submit" name="searchtag" value="Tower Defense" class="btn-tag px-3">
+                                    <input type="submit" name="searchtag" value="Card Battle" class="btn-tag px-3">
+                                    <input type="submit" name="searchtag" value="Hack and Slash" class="btn-tag px-3">
+                                    <input type="submit" name="searchtag" value="MOBA" class="btn-tag px-3">
+                                    <input type="submit" name="searchtag" value="Survival" class="btn-tag px-3">
+                                    <input type="submit" name="searchtag" value="Horror" class="btn-tag px-3">
+                                    <input type="submit" name="searchtag" value="Battle Royale" class="btn-tag px-3">
+                                    <input type="submit" name="searchtag" value="FPS" class="btn-tag px-3">
+                                    <input type="submit" name="searchtag" value="TPS" class="btn-tag px-3">
+                                    <input type="submit" name="searchtag" value="Base Building" class="btn-tag px-3">
+                                    <input type="submit" name="searchtag" value="Side-scrolling" class="btn-tag px-3">
+                                    <input type="submit" name="searchtag" value="AR" class="btn-tag px-3">
+                                </form>
+                            </div>
                         </div>
                     </div>
+                    <div class="col-3">
                         <form method="GET" class="flex-grow-1 flex-sm-grow-0">
-                            <input class="btn btn-theme w-100 px-4 text-white" type="submit" value="Clear">
+                            <input class="btn-theme w-100 text-white" type="submit" value="Clear">
                         </form>
+                    </div>
+                    <div class="col-3">
                         <form method="GET" class="flex-grow-1 flex-sm-grow-0">
-                            <input class="btn btn-theme w-100 px-4 text-warning" type="submit" name="searchfav" value="Favorite">
+                            <input class="btn-theme w-100 text-warning" type="submit" name="searchfav" value="Favorite">
                         </form>
+                    </div>
                 </div>
     </div>
     
 </div>
     
     
-        <?php
-        if (isset($_GET['searchbar']) && $_GET['searchbar'] !== '') {
-                $search_word = $_GET['searchbar']; 
-                $sql = "SELECT 
-                    `game_list`.`id` as `id`,
-                    `game_list`.`name` as `name`,
-                    `game_list`.`pic` as `pic` ,
-                    `game_list`.`timezone` as `timezone` ,
-                    `game_list`.`reset_time` as `reset_time` ,
-                    GROUP_CONCAT(`tag`.`name` SEPARATOR ' | ') as `tag_names`
-                    from `game_list`
-                    left join `game_tag` on `game_list`.`id` = `game_tag`.`game_id`
-                    left join `tag` on `game_tag`.`tag_id` = `tag`.`id`
-                    where `game_list`.`name` like '%".$search_word."%'
-                    group by `game_list`.`id`
-                    order by  `game_list`.`name`"; }
-    
-        elseif (isset($_GET['searchtag']) && $_GET['searchtag'] !== ''){
-                $search_tag = $_GET['searchtag'];
-                if ($search_tag !== '') {
-                $sql = "SELECT 
-                    `game_list`.`id` as `id`,
-                    `game_list`.`name` as `name`,
-                    `game_list`.`pic` as `pic` ,
-                    `game_list`.`timezone` as `timezone` ,
-                    `game_list`.`reset_time` as `reset_time` ,
-                    GROUP_CONCAT(`tag`.`name` SEPARATOR ' | ') as `tag_names`
-                    from `game_list`
-                    left join `game_tag` on `game_list`.`id` = `game_tag`.`game_id`
-                    left join `tag` on `game_tag`.`tag_id` = `tag`.`id`
-                    where `game_list`.`id` IN (
-                        SELECT `game_tag`.`game_id` 
-                        FROM `game_tag`
-                        INNER JOIN `tag` ON `game_tag`.`tag_id` = `tag`.`id`
-                        WHERE `tag`.`name` = '".$search_tag."'
-                    )
-                    group by `game_list`.`id`
-                    order by `game_list`.`name`"; }
-        }
-        elseif (isset($_GET['searchfav']) && $_GET['searchfav'] !== ''){
-                $search_fav = $_GET['searchfav'];
-                if ($search_fav !== '') {
-                    $current_user_id = isset($_SESSION['ssid']) ? intval($_SESSION['ssid']) : 0;
-                $sql = "SELECT 
-                    `game_list`.`id` as `id`,
-                    `game_list`.`name` as `name`,
-                    `game_list`.`pic` as `pic` ,
-                    `game_list`.`timezone` as `timezone` ,
-                    `game_list`.`reset_time` as `reset_time` ,
-                    GROUP_CONCAT(`tag`.`name` SEPARATOR ' | ') as `tag_names`
-                    from `game_list`
-                    left join `game_tag` on `game_list`.`id` = `game_tag`.`game_id`
-                    left join `tag` on `game_tag`.`tag_id` = `tag`.`id`
-                    WHERE `game_list`.`id` IN (
-                            SELECT `user_fav`.`game_id` 
-                            FROM `user_fav` 
-                            WHERE `user_fav`.`user_id` = ".$current_user_id."
+       <?php
+            if (isset($_GET['searchbar']) && $_GET['searchbar'] !== '') {
+            $search_word = trim($_GET['searchbar']); 
+            
+            $sql = "SELECT 
+                `game_list`.`id` as `id`,
+                `game_list`.`name` as `name`,
+                `game_list`.`pic` as `pic`,
+                `game_list`.`timezone` as `timezone`,
+                `game_list`.`reset_time` as `reset_time`,
+                GROUP_CONCAT(`tag`.`name` SEPARATOR ' | ') as `tag_names`
+            FROM `game_list`
+            LEFT JOIN `game_tag` ON `game_list`.`id` = `game_tag`.`game_id`
+            LEFT JOIN `tag` ON `game_tag`.`tag_id` = `tag`.`id`
+            GROUP BY 
+                `game_list`.`id`, 
+                `game_list`.`name`, 
+                `game_list`.`pic`, 
+                `game_list`.`timezone`, 
+                `game_list`.`reset_time`
+            HAVING 
+                `game_list`.`name` LIKE '%" . $search_word . "%' 
+                OR `tag_names` LIKE '%" . $search_word . "%'
+            ORDER BY `game_list`.`name`";
+            }
+            elseif (isset($_GET['searchtag']) && $_GET['searchtag'] !== ''){
+                    $search_tag = $_GET['searchtag'];
+                    if ($search_tag !== '') {
+                    $sql = "SELECT
+                        `game_list`.`id` as `id`,
+                        `game_list`.`name` as `name`,
+                        `game_list`.`pic` as `pic` ,
+                        `game_list`.`timezone` as `timezone` ,
+                        `game_list`.`reset_time` as `reset_time` ,
+                        GROUP_CONCAT(`tag`.`name` SEPARATOR ' | ') as `tag_names`
+                        from `game_list`
+                        left join `game_tag` on `game_list`.`id` = `game_tag`.`game_id`
+                        left join `tag` on `game_tag`.`tag_id` = `tag`.`id`
+                        where `game_list`.`id` IN (
+                            SELECT `game_tag`.`game_id`
+                            FROM `game_tag`
+                            INNER JOIN `tag` ON `game_tag`.`tag_id` = `tag`.`id`
+                            WHERE `tag`.`name` = '".$search_tag."'
                         )
-                    group by `game_list`.`id`
-                    order by `game_list`.`name`"; }
-        }
-        else {
-             $sql = "SELECT 
-                    `game_list`.`id` as `id`,
-                    `game_list`.`name` as `name`,
-                    `game_list`.`pic` as `pic` ,
-                    `game_list`.`timezone` as `timezone` ,
-                    `game_list`.`reset_time` as `reset_time` ,
-                    GROUP_CONCAT(`tag`.`name` SEPARATOR ' | ') as `tag_names`
-                    from `game_list`
-                    left join `game_tag` on `game_list`.`id` = `game_tag`.`game_id`
-                    left join `tag` on `game_tag`.`tag_id` = `tag`.`id`
-                    group by `game_list`.`id`
-                    order by `game_list`.`name`";
-        }
+                        group by `game_list`.`id`
+                        order by `game_list`.`name`"; }
+            } 
+            elseif (isset($_GET['searchfav']) && $_GET['searchfav'] !== ''){
+                    $search_fav = $_GET['searchfav'];
+                    if ($search_fav !== '') {
+                        $current_user_id = isset($_SESSION['ssid']) ? intval($_SESSION['ssid']) : 0;
+                    $sql = "SELECT 
+                        `game_list`.`id` as `id`,
+                        `game_list`.`name` as `name`,
+                        `game_list`.`pic` as `pic` ,
+                        `game_list`.`timezone` as `timezone` ,
+                        `game_list`.`reset_time` as `reset_time` ,
+                        GROUP_CONCAT(`tag`.`name` SEPARATOR ' | ') as `tag_names`
+                        from `game_list`
+                        left join `game_tag` on `game_list`.`id` = `game_tag`.`game_id`
+                        left join `tag` on `game_tag`.`tag_id` = `tag`.`id`
+                        WHERE `game_list`.`id` IN (
+                                SELECT `user_fav`.`game_id` 
+                                FROM `user_fav` 
+                                WHERE `user_fav`.`user_id` = ".$current_user_id."
+                            )
+                        group by `game_list`.`id`
+                        order by `game_list`.`name`"; }
+            }
+            else {
+                $sql = "SELECT 
+                        `game_list`.`id` as `id`,
+                        `game_list`.`name` as `name`,
+                        `game_list`.`pic` as `pic` ,
+                        `game_list`.`timezone` as `timezone` ,
+                        `game_list`.`reset_time` as `reset_time` ,
+                        GROUP_CONCAT(`tag`.`name` SEPARATOR ' | ') as `tag_names`
+                        from `game_list`
+                        left join `game_tag` on `game_list`.`id` = `game_tag`.`game_id`
+                        left join `tag` on `game_tag`.`tag_id` = `tag`.`id`
+                        group by `game_list`.`id`
+                        order by `game_list`.`name`";
+            }
 			$conn = new connect();
             //data
             $game_data = []; //Array
@@ -333,4 +346,3 @@ class home
     }
 }
 ?>
-

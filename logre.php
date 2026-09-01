@@ -42,9 +42,9 @@
             display: inline-block;
         }
         .title {
-            font-size: 70px;
+            font-size: 58px;
         }
-        @media (max-width: 576px) {
+        @media (max-width: 835px) {
         .title {
             font-size: 22px;
         }
@@ -53,11 +53,72 @@
             width:90px;
             height:90px;
         }
-        @media (max-width: 576px) {
+        @media (max-width: 835px) {
         .title-img {
             width:30px;
             height:30px;
         }
+        }
+        .logrebox {
+            width: 400px;
+            padding: 20px;
+            border: 1px #00f2ff solid;
+            border-radius:45px;
+            background-color: #334155;
+            display: flex;
+            justify-content: center;
+        }
+        @media (max-width: 835px) {
+        .logrebox {
+            width: 300px;
+            padding: 15px;
+            border: 1px #00f2ff solid;
+            border-radius:45px;
+            background-color: #334155;
+        }
+        }
+        .logre_title {
+            color: white;
+            font-size: 50px;
+        }
+        @media (max-width: 835px) {
+        .logre_title {
+            color: white;
+            font-size: 35px;
+        }
+        }
+        .img_input {
+            width:20px;
+            height:20px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 15px;
+        }
+        .logre_input {
+            border: none;
+            background-color: white;
+            width:320px;
+            height: 40px;
+            border-radius: 45px;
+            padding-left: 50px;
+        }
+        @media (max-width: 835px) {
+        .logre_input {
+            border: none;
+            background-color: white;
+            width:250px;
+            height: 40px;
+            border-radius: 45px;
+            padding-left: 50px;
+        }
+        }
+        .logre_input_button {
+            
+            background:#545454;
+            border-radius: 45px;
+            color:#ffffff ;
+            width:110px
         }
     </style>
 </head>
@@ -74,49 +135,36 @@ function login_form()
         <div class="d-flex justify-content-center">
             <span class="title" style="color: white;"><img draggable="false" src="/gdrt/src/images/rocket.png" alt="Error" class="title-img">GAME DAILY RESET TRACKER</span>
         </div>
-        <div class="container" style="width: 400px;padding: 20px;border: 1px #00f2ff solid;border-radius:45px;background-color: #334155;">
-            <div class="d-flex justify-content-center">
-            <form action='' method='post'>
-                <table>
-                    <tr>
-                       <td align='center'><p style="color: white;font-size: 50px;">LOGIN</p></td> 
-                    </tr>
-                    <tr align='center'>
-                        <td>
-                            <div class="inputwimg">
-                                <img draggable="false" src="/gdrt/src/images/nigga.png" alt="Error" style="width:20px;height:20px;position: absolute;top: 50%;transform: translateY(-50%);left: 15px;">
-                                <input required name="email" placeholder="กรุณากรอก Email" style="border: 0px #00f2ff solid;background-color: white;width:320px;height: 40px; border-radius: 45px;padding-left: 50px;">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr align='center'>
-                        <td style="padding-top:25px">
-                            <div class="inputwimg">
-                                <img draggable="false" src="/gdrt/src/images/unlockkey.png" alt="Error" style="width:45px;height:45px;position: absolute;top: 50%;transform: translateY(-50%);left: 2px">
-                                <input required name="password" type="password" minlength="8" maxlength="12" placeholder="กรุณากรอก Password" style="border: 0px #00f2ff solid;background-color: white; width:320px;height: 40px; border-radius: 45px;padding-left: 50px;">
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr align='center'>
-                        <td style="padding-top:25px">
-                            <input value="เข้าสู่ระบบ" type="submit" style="border: 3px lime solid; background:#545454; border-radius: 45px;color:#ffffff ;width:100px">
-                            <input type="hidden" name="option" value="logre">
-                            <input type="hidden" name="task" value="login">
-                        </td>
-                    </tr>
-                    <tr style="display: flex;justify-content: center;padding-top:25px">
-                         <td style="padding-right:25px;">
-                            <a align='center' class="nav-link active" href="register_form" style="border: 3px #00f2ff solid; background:#545454; border-radius: 45px;color:#ffffff ;width:100px">ยังไม่มีบัญชี?</a>
-                        </td>
-                        <td>
-                            <input type='button' value='กลับหน้าหลัก' onclick='window.open("/gdrt/src/home","_self")'  style="border: 3px #0f2ef5 solid; background:#545454; border-radius: 45px;color:#ffffff;width:100px">
-                        </td>
-                    </tr>
-                </table>
-            </form>
+        <div class="col-12 d-flex justify-content-center">
+            <div class="logrebox col-12">
+                <form action='' method='post'>
+                    <div class="d-flex justify-content-center mb-2">
+                        <span class="logre_title">LOGIN</span>
+                    </div>
+                    <div class="d-flex justify-content-center mb-4">
+                        <div class="inputwimg ">
+                            <img draggable="false" src="/gdrt/src/images/nigga.png" alt="Error" class="img_input">
+                            <input required name="email" pattern="^[a-zA-Z0-9.]+@gmail\.com$" placeholder="กรุณากรอก Email" class="logre_input">
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center mb-3">
+                        <div class="inputwimg">
+                            <img draggable="false" src="/gdrt/src/images/unlockkey.png" alt="Error" class="img_input">
+                            <input required name="password" type="password" minlength="8" maxlength="12" placeholder="กรุณากรอก Password" class="logre_input">
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center mb-3">
+                        <input class="logre_input_button" value="เข้าสู่ระบบ" type="submit" style="border: 3px lime solid;">
+                        <input type="hidden" name="option" value="logre">
+                        <input type="hidden" name="task" value="login">
+                    </div>
+                    <div class="d-flex justify-content-center gap-4">    
+                        <input class="logre_input_button" type='button' value='ยังไม่มีบัญชี?' onclick='window.open("/gdrt/src/logre/register_form","_self")' style="border: 3px cyan solid;">
+                        <input class="logre_input_button" type='button' value='กลับหน้าหลัก' onclick='window.open("/gdrt/src/home","_self")' style="border: 3px blue solid;">
+                    </div>   
+                </form>
             </div>
-        </div>    
+        </div>  
 <?php
  }
 
@@ -169,63 +217,49 @@ function logout() {
 function register_form()
 {
 ?>
-    <div style="display: flex;justify-content: center;">
-        <p style="color: white;font-size: 70px;"><img draggable="false" src="/gdrt/src/images/rocket.png" alt="Error" style="width:90px;height:90px;">GAME DAILY RESET TRACKER</p>
+    <div class="d-flex justify-content-center">
+        <span class="title" style="color: white;"><img draggable="false" src="/gdrt/src/images/rocket.png" alt="Error" class="title-img">GAME DAILY RESET TRACKER</span>
     </div>
-     <div class="container" style="display: flex;justify-content: center;width: 400px;padding: 20px;border: 1px #00f2ff solid;border-radius:45px;background-color: #334155;">
+    <div class="col-12 d-flex justify-content-center">
+        <div class="logrebox col-12">
             <form action='' method='post'>
-                <table>
-                    <tr>
-                       <td align='center'><p style="color: white;font-size: 50px;">REGISTER</p></td> 
-                    </tr>
-                    <tr align='center'>
-                        <td>
-                            <div class="inputwimg">
-                                <img draggable="false" src="/gdrt/src/images/nigga.png" alt="Error" style="width:20px;height:20px;position: absolute;top: 50%;transform: translateY(-50%);left: 15px;">
-                                <input required name="username" placeholder="ชื่อผู้ใช้" maxlength="10" style="border: 0px #00f2ff solid;background-color: white;width:320px;height: 40px; border-radius: 45px;padding-left: 50px">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr align='center'>
-                        <td style= "padding-top:25px">
-                            <div class="inputwimg">
-                                <img draggable="false" src="/gdrt/src/images/unlockkey.png" alt="Error" style="width:45px;height:45px;position: absolute;top: 50%;transform: translateY(-50%);left: 2px;">
-                                <input required name="password" type="password" minlength="8" maxlength="12" placeholder="รหัสผ่าน" style="background-color: white; width:320px;height: 40px; border-radius: 45px;padding-left: 50px">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr align='center'>
-                        <td style="padding-top:25px">
-                            <div class="inputwimg">
-                                <img draggable="false" src="/gdrt/src/images/unlockkey.png" alt="Error" style="width:45px;height:45px;left: 2px;position: absolute;top: 50%;transform: translateY(-50%);">
-                                <input required name="confirmpass" type="password" minlength="8" maxlength="12" autocomplete="off" placeholder="ยืนยันรหัสผ่าน" style="background-color: white; width:320px;height: 40px; border-radius: 45px;padding-left: 50px">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr align='center'>
-                        <td style= "padding-top:25px">
-                            <div class="inputwimg" >
-                                <img draggable="false" src="/gdrt/src/images/mail.png" alt="Error" style="width:20px;height:20px;position: absolute;top: 50%;transform: translateY(-50%);left: 15px;">
-                                <input required name="email" type="email" size="50" placeholder="Email" style="border: 0px #00f2ff solid;background-color: white; width:320px;height: 40px; border-radius: 45px;padding-left: 50px">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr align='center'>
-                        <td style= "padding-top:25px">
-                            <input value="สมัครสมาชิก" type="submit" style="border: 3px lime solid; background:#545454; border-radius: 45px;color:#ffffff ;width:100px">
-                        </td>
-                    </tr>
-                    <tr style="display: flex;justify-content: center;padding-top:25px">
-                         <td style="padding-right:25px;">
-                            <a align='center' class="nav-link active" href="/gdrt/src/logre/login_form" style="border: 3px #00f2ff solid; background:#545454; border-radius: 45px;color:#ffffff ;width:100px">มีบัญชีอยู่แล้ว</a>
-                        </td>
-                        <td>
-                            <input type='button' value='กลับหน้าหลัก' onclick='window.open("/gdrt/src/home","_self")'  style="border: 3px #0f2ef5 solid; background:#545454; border-radius: 45px;color:#ffffff;width:100px">
-                        </td>
-                    </tr>
-                </table>
+                <div class="d-flex justify-content-center mb-2">
+                    <span class="logre_title">REGISTER</span>
+                </div>
+                <div class="d-flex justify-content-center mb-4">
+                    <div class="inputwimg ">
+                        <img draggable="false" src="/gdrt/src/images/nigga.png" alt="Error" class="img_input">
+                        <input required name="username" placeholder="ชื่อผู้ใช้" maxlength="10" class="logre_input">
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center mb-4">
+                    <div class="inputwimg ">
+                        <img draggable="false" src="/gdrt/src/images/unlockkey.png" alt="Error" class="img_input">
+                        <input required name="password" type="password" minlength="8" maxlength="12" placeholder="รหัสผ่าน" class="logre_input">
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center mb-4">
+                    <div class="inputwimg ">
+                        <img draggable="false" src="/gdrt/src/images/unlockkey.png" alt="Error" class="img_input">
+                        <input required name="confirmpass" type="password" minlength="8" maxlength="12" autocomplete="off" placeholder="ยืนยันรหัสผ่าน" class="logre_input">
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center mb-3">
+                    <div class="inputwimg ">
+                        <img draggable="false" src="/gdrt/src/images/mail.png" alt="Error" class="img_input">
+                        <input required pattern="^[a-zA-Z0-9.]+@gmail\.com$" name="email" type="email" size="50" placeholder="Email" class="logre_input">
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center mb-3">
+                    <input class="logre_input_button" value="สมัครสมาชิก" type="submit" style="border: 3px lime solid;">
+                </div>    
+                <div class="d-flex justify-content-center gap-4"> 
+                    <input class="logre_input_button" type='button' value='มีบัญชีอยู่แล้ว' onclick='window.open("/gdrt/src/logre/login_form","_self")' style="border: 3px cyan solid;">
+                    <input class="logre_input_button" type='button' value='กลับหน้าหลัก' onclick='window.open("/gdrt/src/home","_self")'  style="border: 3px #0f2ef5 solid;">
+                </div>      
             </form>
-        </div>    
+        </div>
+    </div>    
 
 <?php
  if(isset($_REQUEST['username']) && isset($_REQUEST['password']) && isset($_REQUEST['email']) ) {
@@ -285,7 +319,7 @@ function register_form()
                 setTimeout(function() {
                 swal({
                     title: "รหัสผ่านไม่ตรงกัน",
-                    type: "error"
+                    type: "warning"
                 }, function() {
                     window.location = "";
                 });
