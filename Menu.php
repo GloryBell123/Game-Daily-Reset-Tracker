@@ -22,11 +22,13 @@
         width: 40px;
         height: 40px;
     }
-
-    .brand-text {
-        font-size: 0.9rem; /* ย่อขนาดตัวอักษรลงไม่ให้แน่นเกินไป */
     }
-    
+    @media (max-width: 576px) {
+    .brand-text {
+        font-size: 0.9rem;
+    }
+    }
+    @media (max-width: 576px) {
     .profile-avatar {
         width: 45px;
         height: 45px;
