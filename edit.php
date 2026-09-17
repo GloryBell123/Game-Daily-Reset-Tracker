@@ -163,7 +163,7 @@ class edit
         echo '<script>
                  setTimeout(function() {
                   swal({
-                      title: "เปลี่ยนรหัสสำเร็จ",
+                      title: "เปลี่ยนรหัสผ่านสำเร็จ",
                       type: "success"
                   }, function() {
                       window.location = "/gdrt/src/profile";
