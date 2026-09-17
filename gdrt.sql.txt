@@ -1,0 +1,312 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Sep 17, 2026 at 06:47 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `gdrt`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `discordapi`
+--
+
+CREATE TABLE `discordapi` (
+  `id` int(6) NOT NULL,
+  `api` varchar(300) NOT NULL,
+  `user_fav_id` int(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `discordapi`
+--
+
+INSERT INTO `discordapi` (`id`, `api`, `user_fav_id`) VALUES
+(14, 'https://discord.com/api/webhooks/1530929416203538572/9cHsWwGYA8WsPGpVBygjqPBv72J4CMgJPF0xWazd4m7GDVSyYMoe297Wx5mBQ2z6jZm0', 1),
+(15, 'https://discord.com/api/webhooks/1479764485798625340/UI-AKuV15-gwP4f3hz47zNkWWY4Vd32xUkfubVAwDijevGG1q294lPkjB9PX_YRp7WrL', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `game_list`
+--
+
+CREATE TABLE `game_list` (
+  `id` int(6) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `pic` varchar(500) NOT NULL,
+  `timezone` varchar(100) NOT NULL,
+  `reset_time` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `game_list`
+--
+
+INSERT INTO `game_list` (`id`, `name`, `pic`, `timezone`, `reset_time`) VALUES
+(1, 'Genshin Impact(Asia)', '1', 'GMT+8', '04:00'),
+(2, 'Genshin Impact(Europe)', '1', 'GMT+1', '04:00'),
+(3, 'Genshin Impact(America)', '1', 'GMT-5', '04:00'),
+(4, 'Honkai: Star Rail(Asia)', '2', 'GMT+8', '04:00'),
+(5, 'Honkai: Star Rail(Europe)', '2', 'GMT+1', '04:00'),
+(6, 'Honkai: Star Rail(America)', '2', 'GMT-5', '04:00'),
+(7, 'Zenless Zone Zero(Asia)', '3', 'GMT+8', '04:00'),
+(8, 'Zenless Zone Zero(Europe)', '3', 'GMT+1', '04:00'),
+(9, 'Zenless Zone Zero(America)', '3', 'GMT-5', '04:00'),
+(10, 'Valorant(AP)', '4', 'GMT+7', '05:00'),
+(11, 'Goddess of Victory: Nikke(Global)', '5', 'UTC+1', '20:00'),
+(12, 'Goddess of Victory: Nikke', '5', 'UTC+7', '14:00'),
+(13, 'Blue Archive', '6', 'UTC+9', '05:00'),
+(14, 'Blue Archive(Global)', '6', 'UTC+0', '19:00'),
+(15, 'Wuthering Waves(Asia)', '7', 'GMT+8', '04:00 AM'),
+(16, 'Wuthering Waves(Europe)', '7', 'GMT+1', '04:00 AM'),
+(17, 'Wuthering Waves(America)', '7', 'GMT-5', '04:00 AM'),
+(18, 'Arknights(Global)', '8', 'UTC-7', '04:00 AM'),
+(19, 'Arknights', '8', 'GMT+9', '04:00 AM'),
+(20, 'Fate/Grand Order(NA)', '9', 'UTC+0', '00:00 AM'),
+(21, 'Fate/Grand Order(JP)', '9', 'GMT+9', '04:00 AM'),
+(22, 'Reverse: 1999(Global)', '10', 'GMT-5', '05:00 AM'),
+(23, 'Honkai Impact 3rd(SEA)', '11', 'GMT+8', '04:00 AM'),
+(24, 'Punishing: Gray Raven(Global)', '12', 'UTC+0', '07:00 AM'),
+(25, 'Punishing: Gray Raven(JP)', '12', 'GMT+9', '05:00 AM'),
+(26, 'Overwatch 2(Global)', '13', 'GMT+7', '02:00 AM'),
+(27, 'League of Legends(TH/SEA)', '14', 'GMT+7', '04:00 AM'),
+(28, 'Dead by Daylight(Global)', '15', 'UTC+0', '11:00 AM'),
+(29, 'Apex Legends(Global)', '16', 'GMT+7', '00:00 AM'),
+(30, 'Destiny 2(Global)', '17', 'GMT+7', '00:00 AM'),
+(31, 'Granblue Fantasy(JP)', '18', 'GMT+9', '05:00 AM'),
+(32, 'Cookie Run: Kingdom(Global)', '19', 'GMT+9', '00:00 AM'),
+(33, 'Solo Leveling: Arise(Global)', '20', 'GMT+7', '07:00 AM'),
+(34, 'Brown Dust 2(Global)', '21', 'GMT+9', '05:00 AM'),
+(35, 'Epic Seven(Asia)', '22', 'UTC+0', '03:00 AM'),
+(36, 'Epic Seven(KR)', '22', 'GMT+9', '03:00 AM'),
+(37, 'Azur Lane(EN)', '23', 'UTC-7', '00:00 AM'),
+(38, 'Azur Lane(JP)', '23', 'UTC+9', '00:00 AM'),
+(39, 'Black Clover Mobile(Asia)', '24', 'GMT+8 ', '04:00 AM'),
+(40, 'Black Clover Mobile', '24', 'UTC+9', '04:00 AM'),
+(41, 'Summoners War(Asia)', '25', 'GMT+8', '12:00 AM'),
+(42, 'Tower of Fantasy(Asia)', '26', 'GMT+8', '05:00 AM'),
+(43, 'Farlight 84(Global)', '27', 'UTC+0', '05:00 AM'),
+(44, 'Helldivers 2(Global)', '28', 'UTC+0', '05:00 AM'),
+(45, 'World of Warcraft(SEA)', '29', 'UTC+0', '03:00 PM');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `game_tag`
+--
+
+CREATE TABLE `game_tag` (
+  `game_id` int(6) NOT NULL,
+  `tag_id` int(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `game_tag`
+--
+
+INSERT INTO `game_tag` (`game_id`, `tag_id`) VALUES
+(1, 1),
+(1, 2),
+(2, 1),
+(2, 2),
+(3, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tag`
+--
+
+CREATE TABLE `tag` (
+  `id` int(6) NOT NULL,
+  `name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tag`
+--
+
+INSERT INTO `tag` (`id`, `name`) VALUES
+(1, 'Gacha'),
+(2, 'MMO'),
+(3, 'RPG'),
+(4, 'Open World'),
+(5, 'Action'),
+(6, 'Turn-based'),
+(7, 'Idle'),
+(8, 'Shooter'),
+(9, 'Tactical'),
+(10, 'Strategy'),
+(11, 'Tower Defense'),
+(12, 'Card Battle'),
+(13, 'Hack and Slash'),
+(14, 'MOBA'),
+(15, 'Survival'),
+(16, 'Horror'),
+(17, 'Battle Royale'),
+(18, 'FPS'),
+(19, 'TPS'),
+(20, 'Base Building'),
+(21, 'Side-scrolling'),
+(22, 'AR');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(6) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `pass` varchar(100) NOT NULL,
+  `profile` int(6) NOT NULL DEFAULT 1,
+  `noti_status` int(1) NOT NULL DEFAULT 0,
+  `noti_60` int(1) NOT NULL,
+  `noti_30` int(1) NOT NULL,
+  `noti_10` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `email`, `pass`, `profile`, `noti_status`, `noti_60`, `noti_30`, `noti_10`) VALUES
+(1, 'test', 'jiratip11122@gmail.com', 'c129b324aee662b04eccf68babba85851346dff9\n', 7, 0, 0, 0, 0),
+(2, 'aou อ้วน', 'onecom30@gmail.com', 'c129b324aee662b04eccf68babba85851346dff9', 14, 0, 0, 0, 0),
+(3, 'comoc51', 'ikw@g', 'c129b324aee662b04eccf68babba85851346dff9\n', 1, 0, 0, 0, 0),
+(4, 'gumungai1', 'dwawa@gmail.com', 'c129b324aee662b04eccf68babba85851346dff9\n', 3, 1, 0, 0, 0),
+(5, 'lek', 'onecom30@gmail.co', 'efc1875868806cf8216f69880d8ec4559a5243f1', 1, 0, 0, 0, 0),
+(6, 'dwdsfa', 'dwadawdwad@gmail.com', '83c6fde429fd1868712c6d164c61e1a320baafd9', 1, 0, 0, 0, 0),
+(7, 'superadmin', 'thestackdev@gmail.com', '49565a2a11840a011ff3b546b4fbf4c9b7a0b63a', 1, 0, 0, 0, 0),
+(8, 'StartGackt', 'thestackdev2001@outlook.com', '9db703d1b157735ea0311efdf23dc4ec224d903a', 1, 0, 0, 0, 0),
+(9, 'oat', 'oat45434@gmail.com', '6d85c0655154ad2f7aeb834a338514f11c3fd05f', 3, 1, 1, 1, 1),
+(10, 'comoc55', 'dadwdwda@gmail.com', 'c129b324aee662b04eccf68babba85851346dff9', 1, 0, 0, 0, 0),
+(11, 'gumungai', 'thackdev2001@outlook.com', 'c129b324aee662b04eccf68babba85851346dff9', 1, 0, 0, 0, 0),
+(12, 'gumungai1', 'thestackdev2001@dwadsa.com', 'c129b324aee662b04eccf68babba85851346dff9', 1, 0, 0, 0, 0),
+(13, 'gumungai', 'thestackdev2001@wwww.com', 'c129b324aee662b04eccf68babba85851346dff9', 1, 0, 0, 0, 0),
+(14, 'gumungai', 'dwada@dwada', 'c129b324aee662b04eccf68babba85851346dff9', 1, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_fav`
+--
+
+CREATE TABLE `user_fav` (
+  `id` int(6) NOT NULL,
+  `user_id` int(6) NOT NULL,
+  `game_id` int(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_fav`
+--
+
+INSERT INTO `user_fav` (`id`, `user_id`, `game_id`) VALUES
+(13, 2, 5),
+(14, 2, 8),
+(18, 2, 1),
+(19, 2, 3),
+(20, 2, 7),
+(22, 2, 10),
+(23, 2, 11),
+(24, 2, 12),
+(25, 2, 6),
+(27, 2, 9),
+(28, 2, 4),
+(29, 2, 2),
+(31, 2, 18),
+(32, 1, 18),
+(33, 9, 19);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `discordapi`
+--
+ALTER TABLE `discordapi`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `game_list`
+--
+ALTER TABLE `game_list`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tag`
+--
+ALTER TABLE `tag`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_fav`
+--
+ALTER TABLE `user_fav`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `discordapi`
+--
+ALTER TABLE `discordapi`
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `game_list`
+--
+ALTER TABLE `game_list`
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+
+--
+-- AUTO_INCREMENT for table `tag`
+--
+ALTER TABLE `tag`
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `user_fav`
+--
+ALTER TABLE `user_fav`
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
