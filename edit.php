@@ -26,6 +26,33 @@
             position: relative;
             display: inline-block;
         }
+        .title {
+            font-size: 58px;
+        }
+        @media (max-width: 835px) {
+        .title {
+            font-size: 22px;
+        }
+        }
+        .title-img {
+            width:90px;
+            height:90px;
+        }
+        @media (max-width: 835px) {
+        .title-img {
+            width:30px;
+            height:30px;
+        }
+        }
+        .img_input {
+            width:20px;
+            height:20px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 15px;
+        }
+        
     </style>
 </head>
 
@@ -45,7 +72,7 @@ class edit
                     <tr>
                          <td>
                             <div>
-                                <p style="color: white;font-size: 70px;"><img draggable="false" src="/gdrt/src/images/rocket.png" alt="Error" style="width:90px;height:90px;">GAME DAILY RESET TRACKER</p>
+                                <span class="title" style="color: white;"><img draggable="false" src="/gdrt/src/images/clock.png" alt="Error" class="title-img">GAME DAILY RESET TRACKER</span>
                             </div>
                         </td>
                     </tr>
@@ -107,7 +134,7 @@ class edit
                     <tr>
                          <td>
                             <div>
-                                <p style="color: white;font-size: 70px;"><img src="/gdrt/src/images/rocket.png" class="search-icon" alt="Error" style="width:90px;height:90px">GAME DAILY RESET TRACKER</p>
+                                <span class="title" style="color: white;"><img draggable="false" src="/gdrt/src/images/clock.png" alt="Error" class="title-img">GAME DAILY RESET TRACKER</span>
                             </div>
                         </td>
                     </tr>
@@ -120,7 +147,7 @@ class edit
                     <tr align='center'>
                         <td>
                             <div class="inputwimg">
-                                <img draggable="false" src="/gdrt/src/images/unlockkey.png" alt="Error" style="width:45px;height:45px;left: 2px;position: absolute;top: 50%;transform: translateY(-50%);">
+                                <img draggable="false" src="/gdrt/src/images/unlockkey.png" alt="Error" class="img_input">
                                 <input required name="password" type="password" minlength="8" maxlength="12" autocomplete="off" placeholder="กรอกรหัสผ่านใหม่" style="border: 0px;background-color: #545454;width:320px;height: 40px; border-radius: 45px;padding-left: 50px;">
                             </div>
                         </td>
@@ -128,7 +155,7 @@ class edit
                     <tr align='center'>
                         <td style="padding-top:25px">
                             <div class="inputwimg">
-                                <img draggable="false" src="/gdrt/src/images/unlockkey.png" alt="Error" style="width:45px;height:45px;left: 2px;position: absolute;top: 50%;transform: translateY(-50%);">
+                                <img draggable="false" src="/gdrt/src/images/unlockkey.png" alt="Error" class="img_input">
                                 <input required name="confirmpass" type="password" minlength="8" maxlength="12" autocomplete="off" placeholder="ยืนยันรหัสผ่าน" style="border: 0px solid;background-color: #545454; width:320px;height: 40px; border-radius: 45px;padding-left: 50px;">
                             </div>
                         </td>
@@ -191,7 +218,7 @@ class edit
                     <tr>
                          <td>
                             <div>
-                                <p style="color: white;font-size: 70px;"><img src="/gdrt/src/images/rocket.png" alt="Error" style="width:90px;height:90px;">GAME DAILY RESET TRACKER</p>
+                                <span class="title" style="color: white;"><img draggable="false" src="/gdrt/src/images/clock.png" alt="Error" class="title-img">GAME DAILY RESET TRACKER</span>
                             </div>
                         </td>
                     </tr>

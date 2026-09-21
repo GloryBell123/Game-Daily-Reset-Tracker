@@ -90,11 +90,72 @@
             transform: translateX(25px);
             background-color: white;
         }
+
         .inputwimg {
-            height: 100px;
+            position: relative;
+            display: inline-block;
+        }
+        .title {
+            font-size: 58px;
+        }
+        @media (max-width: 835px) {
+        .title {
+            font-size: 22px;
+        }
+        }
+        .title-img {
+            width:90px;
+            height:90px;
+        }
+        @media (max-width: 835px) {
+        .title-img {
+            width:30px;
+            height:30px;
+        }
+        }
+        .img_input {
+            width:20px;
+            height:20px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 15px;
+        }
+        .logrebox {
+            width: 500px;
+            padding: 20px;
+            border: 1px #00f2ff solid;
+            border-radius:45px;
+            background-color: #334155;
             display: flex;
-            align-items: center;
             justify-content: center;
+        }
+        @media (max-width: 835px) {
+        .logrebox {
+            width: 320px;
+            padding: 15px;
+            border: 1px #00f2ff solid;
+            border-radius:45px;
+            background-color: #334155;
+        }
+        }
+        .input_style{
+            width: 300px; 
+            height: 45px; 
+            border-radius: 45px; 
+            padding-left: 15px; 
+            border: 0px; 
+            margin: 0 10px;
+        }
+        @media (max-width: 835px) {
+            .input_style{
+            width: 160px; 
+            height: 45px; 
+            border-radius: 45px; 
+            padding-left: 15px; 
+            border: 0px; 
+            margin: 0 10px;
+        }
         }
     </style>
 </head>
@@ -120,73 +181,71 @@ class discord {
             $user_webhook_url = $cdr['api'];
             
         ?>
-        <div style="display: flex;justify-content: center;height: 500px;">
+        <div class="d-flex justify-content-center">
+            <span class="title" style="color: white;"><img draggable="false" src="/gdrt/src/images/clock.png" alt="Error" class="title-img">GAME DAILY RESET TRACKER</span>
+        </div>
+        <div class="d-flex justify-content-center">
+            <p style="color: white;font-size: 45px;">การแจ้งเตือน</p>
+        </div>
+        <div class="col-12 d-flex justify-content-center">
+            <div class="logrebox col-12">
                 <form action="" method="post">
-                                    <div class="inputwimg">
-                                        <img src="/gdrt/src/images/clock.png" alt="Error" style="width:90px;height:90px;">
-                                        <p style="color: white;font-size: 70px;">GAME DAILY RESET TRACKER</p>
-                                    </div >
-                                        <div style="display: flex;justify-content: center">
-                                        <p style="color: white;font-size: 45px;">การแจ้งเตือน</p>
-                                        </div>
-                                    <div style="margin-left:25%;display: inline-box;background-color: #334155;width:500px;padding:10px 0px 10px 0px;border-radius: 20px;border : 2px #00f2ff solid">
-                                        <div style="display: flex;justify-content: center;align-items:center">
-                                            <span style="font-size : 30px;color : white;">เปิดการแจ้งเตือน </span>
-                                            <label class="switch_main">
-                                                <input type="checkbox" id="noti_toggle" onchange="toggleNotification()"
-                                                <?php echo ($user_noti_status == 1) ? 'checked' : ''; ?>>
-                                                <span class="slider_main"></span>
-                                            </label>
-                                        </div>
-                                
-                                        <div style="display: flex;justify-content: center;align-items:center">
-                                            <span class="toggle-text">แจ้งเตือนเมื่อเหลือ 10 นาที</span>
-                                            <label class="switch_sub">
-                                                <input type="checkbox" id="noti_toggle_10" onchange="toggleNotification()"
-                                                <?php echo ($user_noti_status_10 == 1) ? 'checked' : ''; ?>>
-                                                <span class="slider"></span>
-                                            </label>
-                                        </div>
-                                        <div style="display: flex;justify-content: center;align-items:center">
-                                                <span class="toggle-text">แจ้งเตือนเมื่อเหลือ 30 นาที</span>
-                                                <label class="switch_sub">
-                                                    <input type="checkbox" id="noti_toggle_30" onchange="toggleNotification()"
-                                                    <?php echo ($user_noti_status_30 == 1) ? 'checked' : ''; ?>>
-                                                    <span class="slider"></span>
-                                                </label>
-                                        </div>
-                                        <div style="display: flex;justify-content: center;align-items:center">
-                                                <span class="toggle-text" style="">แจ้งเตือนเมื่อเหลือ 60 นาที</span>
-                                                <label class="switch_sub">
-                                                    <input type="checkbox" id="noti_toggle_60" onchange="toggleNotification()"
-                                                    <?php echo ($user_noti_status_60 == 1) ? 'checked' : ''; ?>>
-                                                    <span class="slider"></span>
-                                                </label>
-                                        </div>
-                                        <div style="display: flex;justify-content: center;padding-top:25px;">
-                                            <img src="/gdrt/src/images/p.png" alt="Error" style="width:45px;height:45px">
-
-                                            <input placeholder="กรอก Url Webhook" name="noti" type="url" value="<?php echo htmlspecialchars($user_webhook_url); ?>"
-                                            pattern="https?://(www\.)?(discord|discordapp)\.com/api/webhooks/.*"  
-                                            title="กรุณากรอก Discord Webhook URL ให้ถูกต้อง (ขึ้นต้นด้วย https://discord.com/api/webhooks/)" 
-                                            style="width: 300px; height: 45px; border-radius: 45px; padding-left: 15px; border: 0px; margin: 0 10px;"
-                                            >
-                                            
-                                            <div style="width: 45px; height: 45px; background: #545454; border-radius: 45px; display: flex; justify-content: center; align-items: center;">
-                                                <a href="/gdrt/src/" style="text-decoration: none; color: white;">?</a>
-                                            </div>
-                                        </div>
+                        <div style="display: flex;justify-content: center;align-items:center">
+                            <span style="font-size : 30px;color : white;">เปิดการแจ้งเตือน </span>
+                            <label class="switch_main">
+                                <input type="checkbox" id="noti_toggle" onchange="toggleNotification()"
+                                <?php echo ($user_noti_status == 1) ? 'checked' : ''; ?>>
+                                <span class="slider_main"></span>
+                            </label>
+                        </div>
                                     
-                                        <div style="display: flex;justify-content: center;padding-top:25px;gap :25px">
-                                            <input type="submit" value="Save" style="border: 0px; background: #545454; border-radius: 45px; color: #ffffff; width: 100px;cursor: pointer;"></input>
-                                            <input type="hidden" name="option" value="discord">
-                                            <input type="hidden" name="task" value="insert"> 
-                                            <input type='button' value='กลับหน้าหลัก' onclick='window.open("/gdrt/src/profile","_self")'  style="border: 0px solid; background:#545454; border-radius: 45px;color:#ffffff;width:100px">
-                                        </div>
-                                    </div>
-                               
+                        <div style="display: flex;justify-content: center;align-items:center">
+                            <span class="toggle-text">แจ้งเตือนเมื่อเหลือ 10 นาที</span>
+                            <label class="switch_sub">
+                                <input type="checkbox" id="noti_toggle_10" onchange="toggleNotification()"
+                                <?php echo ($user_noti_status_10 == 1) ? 'checked' : ''; ?>>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div style="display: flex;justify-content: center;align-items:center">
+                                <span class="toggle-text">แจ้งเตือนเมื่อเหลือ 30 นาที</span>
+                                <label class="switch_sub">
+                                    <input type="checkbox" id="noti_toggle_30" onchange="toggleNotification()"
+                                    <?php echo ($user_noti_status_30 == 1) ? 'checked' : ''; ?>>
+                                    <span class="slider"></span>
+                                </label>
+                        </div>
+                        <div style="display: flex;justify-content: center;align-items:center">
+                                <span class="toggle-text" style="">แจ้งเตือนเมื่อเหลือ 60 นาที</span>
+                                <label class="switch_sub">
+                                    <input type="checkbox" id="noti_toggle_60" onchange="toggleNotification()"
+                                    <?php echo ($user_noti_status_60 == 1) ? 'checked' : ''; ?>>
+                                    <span class="slider"></span>
+                                </label>
+                        </div>
+                        <div style="display: flex;justify-content: center;padding-top:25px;">
+                            <img src="/gdrt/src/images/p.png" alt="Error" style="width:45px;height:45px">
+
+                            <input class='input_style' placeholder="กรอก Url Webhook" name="noti" type="url" value="<?php echo htmlspecialchars($user_webhook_url); ?>"
+                            pattern="https?://(www\.)?(discord|discordapp)\.com/api/webhooks/.*"  
+                            title="กรุณากรอก Discord Webhook URL ให้ถูกต้อง (ขึ้นต้นด้วย https://discord.com/api/webhooks/)">
+                                                
+                            <div style="width: 45px; height: 45px; background: #545454; border-radius: 45px; display: flex; justify-content: center; align-items: center;">
+                                <a href="/gdrt/src/" style="text-decoration: none; color: white;">?</a>
+                            </div>
+                        </div>
+                                        
+                        <div style="display: flex;justify-content: center;padding-top:25px;gap :25px">
+                            <input type="submit" value="Save" style="border: 0px; background: #545454; border-radius: 45px; color: #ffffff; width: 100px;cursor: pointer;"></input>
+                            <input type="hidden" name="option" value="discord">
+                            <input type="hidden" name="task" value="insert"> 
+                            <input type='button' value='กลับหน้าหลัก' onclick='window.open("/gdrt/src/profile","_self")'  style="border: 0px solid; background:#545454; border-radius: 45px;color:#ffffff;width:100px">
+                        </div>
+                                        
+                                
                 </form>
             </div>
+        </div>
             <?php
     } 
     
