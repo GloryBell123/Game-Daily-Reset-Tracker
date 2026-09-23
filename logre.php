@@ -172,7 +172,7 @@ function login()
 {
     $user = $_REQUEST['email'];
     $pass = $_REQUEST['password'];
-    
+
     $conn   = new connect();
     $sql = "select * from `user`
             where `email` = '".$user."'
@@ -249,7 +249,7 @@ function register_form()
                 <div class="d-flex justify-content-center mb-4">
                     <div class="inputwimg ">
                         <img draggable="false" src="/gdrt/src/images/mail.png" alt="Error" class="img_input">
-                        <input required name="email" type="email" size="50" placeholder="Email" class="logre_input">
+                        <input required name="email" type="text" size="50" placeholder="Email" class="logre_input">
                     </div>
                 </div>
                 <div class="d-flex justify-content-center mb-3">
@@ -266,10 +266,28 @@ function register_form()
 <?php
  if(isset($_REQUEST['username']) && isset($_REQUEST['password']) && isset($_REQUEST['email']) ) {
     $username = $_REQUEST['username'];
+
     $password = $_REQUEST['password'];
     $confirm = $_REQUEST['confirmpass'];
-    $email = $_REQUEST['email'];
-
+        if (filter_var($_REQUEST['email'], FILTER_VALIDATE_EMAIL)) {
+        $email = $_REQUEST['email'];
+        }
+        else {
+        echo '<script>
+                        setTimeout(function() {
+                        swal({
+                            title: "kuy",  
+                            text: "kuy",
+                            type: "warning"
+                        }, function() {
+                            window.location = "/gdrt/src/logre/register_form";
+                        });
+                        }, 200);
+                </script>';
+            echo "Invalid email format";
+            
+        return false;
+        }
     $conn = new connect();
     if ($password == $confirm) 
     {

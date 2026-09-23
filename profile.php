@@ -28,7 +28,6 @@ class profile
                 ?>
 <div class="col-12 col-md-10 col-lg-8 px-5">
     <div class="d-flex align-items-center mb-3 text-white fw-bold" style="font-size: clamp(0.9rem, 2.5vw, 3rem);">
-        <img src="images/mag.png" alt="search" class="me-2" style="width: 35px; height: 35px;">
         <span>PROFILE</span>
     </div>
     <div class="d-flex flex-column flex-sm-row align-items-center p-md-4 mb-4 text-white" style="border-radius: 45px;border: 1.5px #00f2ff solid;background-color: #334155;margin-left:30px">
@@ -39,11 +38,11 @@ class profile
         <div class="w-100 text-break p-3" style="font-size: clamp(0.9rem, 2.5vw, 1.8rem);">
             <div class="d-flex flex-wrap">
                 <span>Username : <?php echo $cdr['username'];?></span>
-                <a class="text-decoration-none" href="edit/username">🐑</a>
+                <a class="text-decoration-none" href="edit/username">✏️</a>
             </div>
             <div class="d-flex flex-wrap">
                 <span>Password : ********</span>
-                <a class="text-decoration-none" href="edit/password">🐑</a>
+                <a class="text-decoration-none" href="edit/password">✏️</a>
             </div>
             <div class="text-truncate">
                 <span>Email : <?php echo $cdr['email'];?></span>
