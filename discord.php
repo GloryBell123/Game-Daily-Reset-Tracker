@@ -172,10 +172,59 @@ class discord {
                                             style="width: 300px; height: 45px; border-radius: 45px; padding-left: 15px; border: 0px; margin: 0 10px;"
                                             >
                                             
-                                            <div style="width: 45px; height: 45px; background: #545454; border-radius: 45px; display: flex; justify-content: center; align-items: center;">
-                                                <a href="/gdrt/src/" style="text-decoration: none; color: white;">?</a>
-                                            </div>
+                                            <button type="button" id="howto" style="width: 45px; height: 45px; background: #545454; border-radius: 45px; display: flex; justify-content: center; align-items: center;">
+                                            ?
+                                            </button>
                                         </div>
+                                        <script>
+                                        document.getElementById('howto').addEventListener('click', function() {
+                                            swal({
+                                                title: "วิธีหา Discord Webhook URL",
+                                                text: "หน้าที่ 1",
+                                                imageUrl: "/gdrt/src/images/howto1.png",
+                                                imageSize: "300x400",
+                                                imageAlt: "Error",
+                                                showCancelButton: true,
+                                                confirmButtonColor: "#00ccff",
+                                                confirmButtonText: "หน้าต่อไป",
+                                                cancelButtonText: "ปิดหน้าต่าง",
+                                                reverseButtons: true
+                                            }, function(nextpage) {
+                                                if (nextpage) {
+                                                    setTimeout(function() {
+                                                        swal({
+                                                        title: "วิธีหา Discord Webhook URL",
+                                                        text: "หน้าที่ 2",
+                                                        imageUrl: "/gdrt/src/images/howto2.png",
+                                                        imageSize: "300x400",
+                                                        imageAlt: "Error",
+                                                        showCancelButton: true,
+                                                        confirmButtonColor: "#00ccff",
+                                                        confirmButtonText: "หน้าต่อไป",
+                                                        cancelButtonText: "ปิดหน้าต่าง",
+                                                        reverseButtons: true
+                                                        }, function(nextpage) {
+                                                            if (nextpage) {
+                                                                setTimeout(function() {
+                                                                    swal({
+                                                                    title: "วิธีหา Discord Webhook URL",
+                                                                    text: "หน้าที่ 3",
+                                                                    imageUrl: "/gdrt/src/images/howto3.png",
+                                                                    imageSize: "300x400",
+                                                                    imageAlt: "Error",
+                                                                    showCancelButton: true,
+                                                                    cancelButtonText: "ปิดหน้าต่าง",
+                                                                    showConfirmButton: false
+                                                                    }
+                                                                    )
+                                                                }, 300);
+                                                            }}
+                                                        )
+                                                    }, 300);
+                                                }}
+                                            )
+                                        });
+                                        </script>
                                     
                                         <div style="display: flex;justify-content: center;padding-top:25px;gap :25px">
                                             <input type="submit" value="Save" style="border: 0px; background: #545454; border-radius: 45px; color: #ffffff; width: 100px;cursor: pointer;"></input>
