@@ -133,7 +133,7 @@ function login_form()
  {
  ?>         
         <div class="d-flex justify-content-center">
-            <span class="title" style="color: white;"><img draggable="false" src="/gdrt/src/images/rocket.png" alt="Error" class="title-img">GAME DAILY RESET TRACKER</span>
+            <span class="title" style="color: white;"><img draggable="false" src="/gdrt/src/images/clock.png" alt="Error" class="title-img">GAME DAILY RESET TRACKER</span>
         </div>
         <div class="col-12 d-flex justify-content-center">
             <div class="logrebox col-12">
@@ -172,6 +172,7 @@ function login()
 {
     $user = $_REQUEST['email'];
     $pass = $_REQUEST['password'];
+    
     $conn   = new connect();
     $sql = "select * from `user`
             where `email` = '".$user."'
@@ -219,7 +220,7 @@ function register_form()
 ?>
 
     <div class="d-flex justify-content-center">
-        <span class="title" style="color: white;"><img draggable="false" src="/gdrt/src/images/rocket.png" alt="Error" class="title-img">GAME DAILY RESET TRACKER</span>
+        <span class="title" style="color: white;"><img draggable="false" src="/gdrt/src/images/clock.png" alt="Error" class="title-img">GAME DAILY RESET TRACKER</span>
     </div>
     <div class="col-12 d-flex justify-content-center">
         <div class="logrebox col-12">

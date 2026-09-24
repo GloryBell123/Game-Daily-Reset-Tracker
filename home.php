@@ -175,6 +175,10 @@ class home
                                     <input type="submit" name="searchtag" value="Base Building" class="btn-tag px-3">
                                     <input type="submit" name="searchtag" value="Side-scrolling" class="btn-tag px-3">
                                     <input type="submit" name="searchtag" value="AR" class="btn-tag px-3">
+                                    <input type="submit" name="searchtag" value="TacticalShooter" class="btn-tag px-3">
+                                    <input type="submit" name="searchtag" value="Casual" class="btn-tag px-3">
+                                    <input type="submit" name="searchtag" value="NavalShooter" class="btn-tag px-3">
+                                    <input type="submit" name="searchtag" value="Scifi" class="btn-tag px-3">
                                 </form>
                             </div>
                         </div>
