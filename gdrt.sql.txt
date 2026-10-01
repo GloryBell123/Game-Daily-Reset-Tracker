@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 17, 2026 at 06:47 AM
+-- Generation Time: Oct 01, 2026 at 10:08 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -39,7 +39,15 @@ CREATE TABLE `discordapi` (
 
 INSERT INTO `discordapi` (`id`, `api`, `user_fav_id`) VALUES
 (14, 'https://discord.com/api/webhooks/1530929416203538572/9cHsWwGYA8WsPGpVBygjqPBv72J4CMgJPF0xWazd4m7GDVSyYMoe297Wx5mBQ2z6jZm0', 1),
-(15, 'https://discord.com/api/webhooks/1479764485798625340/UI-AKuV15-gwP4f3hz47zNkWWY4Vd32xUkfubVAwDijevGG1q294lPkjB9PX_YRp7WrL', 2);
+(15, 'https://discord.com/api/webhooks/1479764485798625340/UI-AKuV15-gwP4f3hz47zNkWWY4Vd32xUkfubVAwDijevGG1q294lPkjB9PX_YRp7WrL', 2),
+(16, 'https://discord.com/api/webhooks/1530929416203538572/9cHsWwGYA8WsPGpVBygjqPBv72J4CMgJPF0xWazd4m7GDVSyYMoe297Wx5mBQ2z6jZm0', 42),
+(17, 'https://discord.com/api/webhooks/1530929416203538572/9cHsWwGYA8WsPGpVBygjqPBv72J4CMgJPF0xWazd4m7GDVSyYMoe297Wx5mBQ2z6jZm0', 45),
+(18, 'https://discord.com/api/webhooks/1530929416203538572/9cHsWwGYA8WsPGpVBygjqPBv72J4CMgJPF0xWazd4m7GDVSyYMoe297Wx5mBQ2z6jZm0', 44),
+(19, 'https://discord.com/api/webhooks/1530929416203538572/9cHsWwGYA8WsPGpVBygjqPBv72J4CMgJPF0xWazd4m7GDVSyYMoe297Wx5mBQ2z6jZm0', 45),
+(20, 'https://discord.com/api/webhooks/1530929416203538572/9cHsWwGYA8WsPGpVBygjqPBv72J4CMgJPF0xWazd4m7GDVSyYMoe297Wx5mBQ2z6jZm0', 44),
+(21, 'https://discord.com/api/webhooks/1530929416203538572/9cHsWwGYA8WsPGpVBygjqPBv72J4CMgJPF0xWazd4m7GDVSyYMoe297Wx5mBQ2z6jZm0', 45),
+(22, 'https://discord.com/api/webhooks/1530929416203538572/9cHsWwGYA8WsPGpVBygjqPBv72J4CMgJPF0xWazd4m7GDVSyYMoe297Wx5mBQ2z6jZm0', 44),
+(23, 'https://discord.com/api/webhooks/1530929416203538572/9cHsWwGYA8WsPGpVBygjqPBv72J4CMgJPF0xWazd4m7GDVSyYMoe297Wx5mBQ2z6jZm0', 44);
 
 -- --------------------------------------------------------
 
@@ -69,12 +77,12 @@ INSERT INTO `game_list` (`id`, `name`, `pic`, `timezone`, `reset_time`) VALUES
 (7, 'Zenless Zone Zero(Asia)', '3', 'GMT+8', '04:00'),
 (8, 'Zenless Zone Zero(Europe)', '3', 'GMT+1', '04:00'),
 (9, 'Zenless Zone Zero(America)', '3', 'GMT-5', '04:00'),
-(10, 'Valorant(AP)', '4', 'GMT+7', '05:00'),
+(10, 'Valorant(AP)', '4', 'GMT+7', '07:00'),
 (11, 'Goddess of Victory: Nikke(Global)', '5', 'UTC+1', '20:00'),
 (12, 'Goddess of Victory: Nikke', '5', 'UTC+7', '14:00'),
 (13, 'Blue Archive', '6', 'UTC+9', '05:00'),
 (14, 'Blue Archive(Global)', '6', 'UTC+0', '19:00'),
-(15, 'Wuthering Waves(Asia)', '7', 'GMT+8', '04:00 AM'),
+(15, 'Wuthering Waves(Asia)', '7', 'GMT+8', '04:00'),
 (16, 'Wuthering Waves(Europe)', '7', 'GMT+1', '04:00 AM'),
 (17, 'Wuthering Waves(America)', '7', 'GMT-5', '04:00 AM'),
 (18, 'Arknights(Global)', '8', 'UTC-7', '04:00 AM'),
@@ -126,7 +134,136 @@ INSERT INTO `game_tag` (`game_id`, `tag_id`) VALUES
 (1, 2),
 (2, 1),
 (2, 2),
-(3, 2);
+(3, 2),
+(1, 3),
+(1, 5),
+(2, 3),
+(2, 5),
+(3, 1),
+(3, 3),
+(3, 5),
+(4, 1),
+(4, 3),
+(4, 6),
+(5, 1),
+(5, 3),
+(5, 6),
+(6, 1),
+(6, 3),
+(6, 6),
+(7, 1),
+(7, 3),
+(7, 5),
+(8, 1),
+(8, 3),
+(8, 5),
+(9, 1),
+(9, 3),
+(9, 5),
+(10, 18),
+(10, 23),
+(11, 1),
+(11, 3),
+(11, 8),
+(12, 1),
+(12, 3),
+(12, 8),
+(13, 1),
+(13, 3),
+(13, 10),
+(14, 1),
+(14, 3),
+(14, 10),
+(15, 1),
+(15, 3),
+(15, 4),
+(15, 5),
+(16, 1),
+(16, 3),
+(16, 4),
+(16, 5),
+(17, 1),
+(17, 3),
+(17, 4),
+(17, 5),
+(18, 1),
+(18, 10),
+(18, 11),
+(19, 1),
+(19, 10),
+(19, 11),
+(20, 1),
+(20, 3),
+(20, 6),
+(21, 1),
+(21, 3),
+(21, 6),
+(22, 1),
+(22, 3),
+(22, 6),
+(23, 1),
+(23, 3),
+(23, 5),
+(24, 1),
+(24, 3),
+(24, 5),
+(25, 1),
+(25, 3),
+(25, 5),
+(26, 18),
+(27, 14),
+(28, 15),
+(29, 17),
+(29, 18),
+(30, 2),
+(30, 18),
+(31, 1),
+(31, 3),
+(31, 6),
+(32, 1),
+(32, 3),
+(32, 20),
+(32, 24),
+(33, 1),
+(33, 3),
+(33, 5),
+(34, 1),
+(34, 3),
+(34, 6),
+(34, 10),
+(35, 1),
+(35, 3),
+(35, 6),
+(36, 1),
+(36, 3),
+(36, 6),
+(37, 1),
+(37, 3),
+(37, 25),
+(38, 1),
+(38, 3),
+(38, 25),
+(39, 1),
+(39, 3),
+(39, 6),
+(40, 1),
+(40, 3),
+(40, 6),
+(41, 1),
+(41, 3),
+(41, 6),
+(41, 10),
+(42, 1),
+(42, 2),
+(42, 3),
+(42, 4),
+(43, 8),
+(43, 17),
+(44, 5),
+(44, 19),
+(45, 2),
+(45, 3),
+(28, 16);
 
 -- --------------------------------------------------------
 
@@ -165,7 +302,11 @@ INSERT INTO `tag` (`id`, `name`) VALUES
 (19, 'TPS'),
 (20, 'Base Building'),
 (21, 'Side-scrolling'),
-(22, 'AR');
+(22, 'AR'),
+(23, 'TacticalShooter'),
+(24, 'Casual'),
+(25, 'NavalShooter'),
+(26, 'Scifi');
 
 -- --------------------------------------------------------
 
@@ -191,7 +332,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `username`, `email`, `pass`, `profile`, `noti_status`, `noti_60`, `noti_30`, `noti_10`) VALUES
 (1, 'test', 'jiratip11122@gmail.com', 'c129b324aee662b04eccf68babba85851346dff9\n', 7, 0, 0, 0, 0),
-(2, 'aou อ้วน', 'onecom30@gmail.com', 'c129b324aee662b04eccf68babba85851346dff9', 14, 0, 0, 0, 0),
+(2, 'aou อ้วน', 'onecom30@gmail.com', 'ab87b3e2048ebcac450a48d2cc2070df2ea6247c', 11, 1, 1, 0, 1),
 (3, 'comoc51', 'ikw@g', 'c129b324aee662b04eccf68babba85851346dff9\n', 1, 0, 0, 0, 0),
 (4, 'gumungai1', 'dwawa@gmail.com', 'c129b324aee662b04eccf68babba85851346dff9\n', 3, 1, 0, 0, 0),
 (5, 'lek', 'onecom30@gmail.co', 'efc1875868806cf8216f69880d8ec4559a5243f1', 1, 0, 0, 0, 0),
@@ -203,7 +344,22 @@ INSERT INTO `user` (`id`, `username`, `email`, `pass`, `profile`, `noti_status`,
 (11, 'gumungai', 'thackdev2001@outlook.com', 'c129b324aee662b04eccf68babba85851346dff9', 1, 0, 0, 0, 0),
 (12, 'gumungai1', 'thestackdev2001@dwadsa.com', 'c129b324aee662b04eccf68babba85851346dff9', 1, 0, 0, 0, 0),
 (13, 'gumungai', 'thestackdev2001@wwww.com', 'c129b324aee662b04eccf68babba85851346dff9', 1, 0, 0, 0, 0),
-(14, 'gumungai', 'dwada@dwada', 'c129b324aee662b04eccf68babba85851346dff9', 1, 0, 0, 0, 0);
+(14, 'gumungai', 'dwada@dwada', 'c129b324aee662b04eccf68babba85851346dff9', 1, 0, 0, 0, 0),
+(15, 'Don J', 'juthawat.jj@gmail.com', 'f7c3bc1d808e04732adf679965ccc34ca7ae3441', 1, 1, 0, 1, 0),
+(33, 'dwad', 'dwad@gmail.co', 'ab87b3e2048ebcac450a48d2cc2070df2ea6247c', 1, 0, 0, 0, 0),
+(34, 'dwada', 'dwafga@gmail.co.th', '$2y$10$aZAb/nnqoEBGMgvu3zZH4eRJFvAj.qLaUTtubdNRef.KT0MwiqMAe', 1, 0, 0, 0, 0),
+(35, 'aouaa', 'dwadw@dwda.ca', '$2y$10$eAkex4r294nWYJwGNPBzvOEALR27pRyj5U80T4gQvbdKRAFFIj8t.', 1, 0, 0, 0, 0),
+(36, 'gumungai', 'test@gmail.com', '$2y$10$S8fSVm8jwret47ElHQXXKupQ/7ZfV9WiXJZlXN1N5lt3LHCWL4wlq', 1, 0, 0, 0, 0),
+(37, 'test2', 'test2@gmail.com', '$2y$10$K4UbIvwmPTZMFHX2Y2cedub1skaBLJ6hKi/fSOarYoU4FYs4eN3gq', 1, 0, 0, 0, 0),
+(38, 'dawdwa', 'dwaw@dwawda.cwa', '\' Or \'1\'=\'1', 1, 0, 0, 0, 0),
+(39, 'dwadwad', 'dawdwa@wdwadwa.ca', '84e84b64b79840e9ea984e56e7c048b9b5d024e8', 1, 0, 0, 0, 0),
+(40, 'dwadwad', 'dawdwa@wdwadwa.ca', '84e84b64b79840e9ea984e56e7c048b9b5d024e8', 1, 0, 0, 0, 0),
+(41, 'dddwad', 'dawdw@dawda.ca', '84e84b64b79840e9ea984e56e7c048b9b5d024e8', 1, 0, 0, 0, 0),
+(42, 'Nigger', 'heyyogaga123@hehe.china', '4bdf6f34e8eefee2e2fddcbc4aa0ad79d64fbf20', 1, 0, 0, 0, 0),
+(43, 'asdas1d5sa', '15sa1d65as1d6a@gmail.cccc', 'c129b324aee662b04eccf68babba85851346dff9', 1, 0, 0, 0, 0),
+(44, 'runboyrun', 'dwad@dawa.ca', 'c129b324aee662b04eccf68babba85851346dff9', 1, 0, 0, 0, 0),
+(45, 'dasdsadsad', '12341234@gmail.cc', 'c129b324aee662b04eccf68babba85851346dff9', 1, 0, 0, 0, 0),
+(46, 'jkungg', 'dwad@ggg.gg', 'c129b324aee662b04eccf68babba85851346dff9', 1, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -236,7 +392,14 @@ INSERT INTO `user_fav` (`id`, `user_id`, `game_id`) VALUES
 (29, 2, 2),
 (31, 2, 18),
 (32, 1, 18),
-(33, 9, 19);
+(33, 9, 19),
+(34, 2, 40),
+(35, 2, 13),
+(36, 2, 14),
+(37, 2, 21),
+(38, 2, 20),
+(39, 2, 33),
+(40, 2, 15);
 
 --
 -- Indexes for dumped tables
@@ -280,7 +443,7 @@ ALTER TABLE `user_fav`
 -- AUTO_INCREMENT for table `discordapi`
 --
 ALTER TABLE `discordapi`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `game_list`
@@ -292,19 +455,19 @@ ALTER TABLE `game_list`
 -- AUTO_INCREMENT for table `tag`
 --
 ALTER TABLE `tag`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `user_fav`
 --
 ALTER TABLE `user_fav`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
