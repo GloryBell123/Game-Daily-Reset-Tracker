@@ -134,20 +134,21 @@ class discord {
             $sql = "SELECT `noti_status`,`noti_60`,`noti_30`,`noti_10` FROM `user` WHERE `id` = '".$user_id."'";
             $res = $conn -> query($sql);
             $cdr = $res -> fetch();
+            $user_webhook_url = '';
             $user_noti_status = $cdr['noti_status'];
             $user_noti_status_60 = $cdr['noti_60'];
             $user_noti_status_30 = $cdr['noti_30'];
             $user_noti_status_10 = $cdr['noti_10'];
 
-
+            
             $sql = "SELECT `api` FROM `discordapi` WHERE `user_fav_id` = '".$user_id."'";
             $res = $conn -> query($sql);
             $cdr = $res -> fetch();
-            if (isset($cdr['api'])) {
-            $user_webhook_url = $cdr['api'];
+            if ($cdr['api'] != '') {
+                $user_webhook_url = $cdr['api'];
             }
             else {
-                $user_webhook_url = ''; 
+                $user_webhook_url = '';
             }
             
         ?>
@@ -280,9 +281,12 @@ function insert() {
     $sql = "select `user_fav_id` , `api` from `discordapi` where `user_fav_id` = '".$id."'";
     $res = $conn -> query($sql);
     $cdr = $res -> fetch();
+    $check_user_id = '';
+    $check_api = ''; 
     $check_user_id = $cdr['user_fav_id'];
     $check_api = $cdr['api'];
-    
+
+
     if ($noti == NULL) {
         if ($id == $check_user_id) {
             if ($check_api != NULL) {
@@ -324,7 +328,7 @@ function insert() {
                       title: "เปลี่ยน API สำเร็จ",
                       type: "success"
                   }, function() {
-                      window.location = "/gdrt/src/profile";
+                      window.location = "/gdrt/src/discord/notification";
                   });
                 }, 200);
             </script>';
