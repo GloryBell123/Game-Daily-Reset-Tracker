@@ -19,6 +19,11 @@ class connect {
     $res->execute();
     return $res;
   }
+  function prepare($sql)
+  {
+    $conn = $this->conn();
+    return $conn->prepare($sql);
+  }
 }
 
 ?>

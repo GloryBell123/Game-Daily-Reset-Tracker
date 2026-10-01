@@ -150,7 +150,7 @@ function login_form()
                     <div class="d-flex justify-content-center mb-3">
                         <div class="inputwimg">
                             <img draggable="false" src="/gdrt/src/images/unlockkey.png" alt="Error" class="img_input">
-                            <input required name="password" type="password" minlength="8" maxlength="12" placeholder="กรุณากรอก Password" class="logre_input">
+                            <input required name="password" type="password" minlength="8" maxlength="12" placeholder="กรุณากรอก Password (ความยาว 8-12 ตัวอักษร)" class="logre_input">
                         </div>
                     </div>
                     <div class="d-flex justify-content-center mb-3">
@@ -170,34 +170,62 @@ function login_form()
 
 function login()
 {
-    $user = $_REQUEST['email'];
-    $pass = $_REQUEST['password'];
+    $user = '';
+    $pass = '';
 
+    $email_pattern = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
+    $pass_pattern = '/^.{8,12}$/';
+    
+    if (preg_match($email_pattern, $_REQUEST['email'])) {
+        $user = $_REQUEST['email'];
+    }
+    if (preg_match($pass_pattern, $_REQUEST['password'])) {
+        $pass = $_REQUEST['password'];
+    }
+
+    if ($user == '') {
+            echo '<script>
+                        setTimeout(function() {
+                        swal({
+                            title: "Invalid email format",  
+                            text: "Email ต้องมี @ และ .",
+                            type: "warning"
+                        }, function() {
+                            window.location = "/gdrt/src/logre/login_form";
+                        });
+                        }, 200);
+                </script>';
+            return false;
+        }  
+    elseif ($pass == '') {
+            echo '<script>
+                        setTimeout(function() {
+                        swal({
+                            title: "Invalid password format",  
+                            text: "ความยาว 8-12 ตัวอักษร",
+                            type: "warning"
+                        }, function() {
+                            window.location = "/gdrt/src/logre/login_form";
+                        });
+                        }, 200);
+                </script>';
+            return false;
+        }    
+    
     $conn   = new connect();
-    $sql = "select * from `user`
-            where `email` = '".$user."'
-            and `pass` = '".sha1($pass)."'";
-    $res = $conn -> query($sql);
-    $cc = 0;
-    while ($cdr = $res -> fetch())
-        {
+    
+    $sql = "select * from `user` where `email` = :email";
+    $stmt = $conn->prepare($sql);
+
+    $stmt->bindParam(':email', $user, PDO::PARAM_STR);
+    $stmt->execute();
+    
+    $cdr = $stmt->fetch();
+        $sha1pass = sha1($pass);
+        if ($cdr && $sha1pass == $cdr['pass']) {
             $_SESSION['ssid'] = $cdr['id'];
             $_SESSION['username'] = $cdr['username'];
-            $cc = 1;
-        }
-        if ($cc == 0) {
-            echo '<script>
-                 setTimeout(function() {
-                  swal({
-                      title: "เข้าสู่ระบบไม่สำเร็จ",
-                      text: "Email หรือ Password ผิด",
-                      type: "error"
-                  }, function() {   
-                      window.location = "/gdrt/src/logre/login_form";
-                  });
-                }, 200);
-            </script>';
-        } else {
+
             echo '<script>
                 setTimeout(function() {
                 swal({
@@ -205,6 +233,19 @@ function login()
                     type: "success"
                 }, function() {
                     window.location = "/gdrt/src/home";
+                });
+                }, 200);
+            </script>';
+            } 
+        else {
+            echo '<script>
+                setTimeout(function() {
+                swal({
+                    title: "เข้าสู่ระบบไม่สำเร็จ",
+                    text: "Email หรือ Password ผิด",
+                    type: "error"
+                }, function() {   
+                    window.location = "/gdrt/src/logre/login_form";
                 });
                 }, 200);
             </script>';
@@ -237,7 +278,7 @@ function register_form()
                 <div class="d-flex justify-content-center mb-4">
                     <div class="inputwimg ">
                         <img draggable="false" src="/gdrt/src/images/unlockkey.png" alt="Error" class="img_input">
-                        <input required name="password" type="password" minlength="8" maxlength="12" placeholder="รหัสผ่าน" class="logre_input">
+                        <input required name="password" type="password" minlength="8" maxlength="12" placeholder="รหัสผ่าน (ความยาว 8-12 ตัวอักษร)" class="logre_input">
                     </div>  
                 </div>       
                 <div class="d-flex justify-content-center mb-4">
@@ -265,35 +306,94 @@ function register_form()
 
 <?php
  if(isset($_REQUEST['username']) && isset($_REQUEST['password']) && isset($_REQUEST['email']) ) {
-    $username = $_REQUEST['username'];
+    $username = '';
+    $password = '';
+    $confirm = '';
+    $email = '';
 
-    $password = $_REQUEST['password'];
-    $confirm = $_REQUEST['confirmpass'];
-        if (filter_var($_REQUEST['email'], FILTER_VALIDATE_EMAIL)) {
+    $username_pattern = '/^[a-zA-Z0-9_-]{4,10}$/';
+    $pass_pattern = '/^.{8,12}$/';
+    $email_pattern = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
+
+    if (preg_match($username_pattern, $_REQUEST['username'])) {
+        $username = $_REQUEST['username'];
+    }
+    if (preg_match($pass_pattern, $_REQUEST['password'])) {
+        $password = $_REQUEST['password'];
+    }
+    if (preg_match($pass_pattern, $_REQUEST['confirmpass'])) {
+        $confirm = $_REQUEST['confirmpass'];
+    }   
+    if (preg_match($email_pattern, $_REQUEST['email'])) {
         $email = $_REQUEST['email'];
-        }
-        else {
+    }
+
+    if ($username == '') {
         echo '<script>
+            setTimeout(function() {
+            swal({
+                 title: "Invalid username format",  
+                text: "Username ต้องมีความยาว 4-10 ตัวอักษร",
+                type: "warning"
+            }, function() {
+                 window.location = "/gdrt/src/logre/register_form";
+            });
+            }, 200);
+            </script>';
+        return false;
+    }   
+    elseif ($password == '' || $confirm == '') {
+            echo '<script>
                         setTimeout(function() {
                         swal({
-                            title: "kuy",  
-                            text: "kuy",
+                            title: "Invalid password format",  
+                            text: "ความยาว 8-12 ตัวอักษร",
                             type: "warning"
                         }, function() {
                             window.location = "/gdrt/src/logre/register_form";
                         });
                         }, 200);
                 </script>';
-            echo "Invalid email format";
-            
-        return false;
+            return false;
+        }    
+    elseif ($password != $confirm) {
+        echo '<script>
+            setTimeout(function() {
+            swal({
+                title: "รหัสผ่านไม่ตรงกัน",
+                text: "กรุณากรอกรหัสผ่านให้ตรงกัน",
+                type: "error"
+                }, function() {
+                    window.location = "/gdrt/src/logre/register_form";
+                });
+                }, 200);
+            </script>';
+            return false;
         }
-    $conn = new connect();
-    if ($password == $confirm) 
+    elseif ($email == '') {
+            echo '<script>
+                        setTimeout(function() {
+                        swal({
+                            title: "Invalid email format",  
+                            text: "Email ต้องมี @ และ .",
+                            type: "warning"
+                        }, function() {
+                            window.location = "/gdrt/src/logre/register_form";
+                        });
+                        }, 200);
+                </script>';
+            return false;
+        }  
+    
+    else
     {
-        $sql = "select `id` from `user` where `email` = '".$email."'";
-        $res = $conn -> query($sql);
-        if($res->rowCount() > 0){
+        $conn = new connect();
+        $sql = "select `id` from `user` where `email` = :email";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->execute();
+
+        if($stmt->rowCount() > 0){
             echo '<script>
                         setTimeout(function() {
                         swal({
@@ -306,8 +406,16 @@ function register_form()
                         }, 200);
                 </script>';
         } else {
-            $sql ="insert into `user` set `username` = '".$username."', `email` = '".$email."', `pass` = '".sha1($password)."'";
-            $res = $conn -> query($sql);
+            $sha1pass = sha1($password);
+            $sql ="insert into `user` (`username`, `email`, `pass`) VALUES (:username, :email, :pass)";
+            $stmt = $conn->prepare($sql);
+
+            $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmt->bindParam(':pass', $sha1pass, PDO::PARAM_STR);
+            
+            $res = $stmt->execute();
+
             if($res){
                 echo '<script>
                     setTimeout(function() {
@@ -333,19 +441,9 @@ function register_form()
                 </script>';
             }
         }
-  }
-  else {
-            echo '<script>
-                setTimeout(function() {
-                swal({
-                    title: "รหัสผ่านไม่ตรงกัน",
-                    type: "error"
-                }, function() {
-                    window.location = "";
-                });
-                }, 200);
-            </script>';
-        }
+    }
+    
+    
  }
  }  
 }
