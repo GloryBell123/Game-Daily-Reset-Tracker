@@ -143,7 +143,12 @@ class discord {
             $sql = "SELECT `api` FROM `discordapi` WHERE `user_fav_id` = '".$user_id."'";
             $res = $conn -> query($sql);
             $cdr = $res -> fetch();
+            if (isset($cdr['api'])) {
             $user_webhook_url = $cdr['api'];
+            }
+            else {
+                $user_webhook_url = ''; 
+            }
             
         ?>
         <div class="d-flex justify-content-center text-center px-3">
